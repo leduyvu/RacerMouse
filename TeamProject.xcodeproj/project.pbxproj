@@ -271,6 +271,11 @@
 		CE67CE3C1877FDDF00E22A81 /* cpSweep1D.c in Sources */ = {isa = PBXBuildFile; fileRef = CE67CE3B1877FDDF00E22A81 /* cpSweep1D.c */; };
 		CE67CE3E1877FDDF00E22A81 /* cpVect.c in Sources */ = {isa = PBXBuildFile; fileRef = CE67CE3D1877FDDF00E22A81 /* cpVect.c */; };
 		CE67CE451877FDDF00E22A81 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE67CE441877FDDF00E22A81 /* AppDelegate.cpp */; };
+		DE27427F1889104000522D09 /* CCJSONConverter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DE27427A1889104000522D09 /* CCJSONConverter.cpp */; };
+		DE2742801889104000522D09 /* cJSON.c in Sources */ = {isa = PBXBuildFile; fileRef = DE27427D1889104000522D09 /* cJSON.c */; };
+		DED3617D187E7C900031D9DE /* RMMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DED3617B187E7C900031D9DE /* RMMap.cpp */; };
+		DED3617F187E97AB0031D9DE /* 26x26.png in Resources */ = {isa = PBXBuildFile; fileRef = DED3617E187E97AB0031D9DE /* 26x26.png */; };
+		DED36181187EA6300031D9DE /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = DED36180187EA6300031D9DE /* 2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -848,6 +853,15 @@
 		CE67CE411877FDDF00E22A81 /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		CE67CE431877FDDF00E22A81 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = "<group>"; };
 		CE67CE441877FDDF00E22A81 /* AppDelegate.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AppDelegate.cpp; path = Classes/AppDelegate.cpp; sourceTree = "<group>"; };
+		DE27427A1889104000522D09 /* CCJSONConverter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCJSONConverter.cpp; sourceTree = "<group>"; };
+		DE27427B1889104000522D09 /* CCJSONConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCJSONConverter.h; sourceTree = "<group>"; };
+		DE27427C1889104000522D09 /* CCJSONData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCJSONData.h; sourceTree = "<group>"; };
+		DE27427D1889104000522D09 /* cJSON.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cJSON.c; sourceTree = "<group>"; };
+		DE27427E1889104000522D09 /* cJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cJSON.h; sourceTree = "<group>"; };
+		DED3617B187E7C900031D9DE /* RMMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RMMap.cpp; sourceTree = "<group>"; };
+		DED3617C187E7C900031D9DE /* RMMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMMap.h; sourceTree = "<group>"; };
+		DED3617E187E97AB0031D9DE /* 26x26.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 26x26.png; path = Resources/26x26.png; sourceTree = "<group>"; };
+		DED36180187EA6300031D9DE /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 2.png; path = Resources/2.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -936,8 +950,10 @@
 			children = (
 				CE67CAE21877FDC700E22A81 /* CloseNormal.png */,
 				CE67CAE41877FDC700E22A81 /* CloseSelected.png */,
+				DED3617E187E97AB0031D9DE /* 26x26.png */,
 				CE67CAE61877FDC700E22A81 /* Default.png */,
 				CE67CAE81877FDC700E22A81 /* HelloWorld.png */,
+				DED36180187EA6300031D9DE /* 2.png */,
 				CE67CAEA1877FDC700E22A81 /* Icon-72.png */,
 				CE67CAEC1877FDC700E22A81 /* Icon-Small-50.png */,
 				CE67CAEE1877FDC700E22A81 /* Icon-Small.png */,
@@ -2009,15 +2025,31 @@
 			isa = PBXGroup;
 			children = (
 				CE0181D5187A811000840F8B /* Character */,
-				CE0181E2187A89F300840F8B /* Definition.h */,
+				DED36177187E786F0031D9DE /* Map */,
 				CE67CE431877FDDF00E22A81 /* AppDelegate.h */,
 				CE67CE441877FDDF00E22A81 /* AppDelegate.cpp */,
 				CE0181E3187A929C00840F8B /* GameScreen.cpp */,
 				CE0181E4187A929D00840F8B /* GameScreen.h */,
 				CE0181E6187A956200840F8B /* GameMenu.cpp */,
 				CE0181E7187A956200840F8B /* GameMenu.h */,
+				CE0181E2187A89F300840F8B /* Definition.h */,
 			);
 			name = Classes;
+			sourceTree = "<group>";
+		};
+		DED36177187E786F0031D9DE /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				DE27427A1889104000522D09 /* CCJSONConverter.cpp */,
+				DE27427B1889104000522D09 /* CCJSONConverter.h */,
+				DE27427C1889104000522D09 /* CCJSONData.h */,
+				DE27427D1889104000522D09 /* cJSON.c */,
+				DE27427E1889104000522D09 /* cJSON.h */,
+				DED3617B187E7C900031D9DE /* RMMap.cpp */,
+				DED3617C187E7C900031D9DE /* RMMap.h */,
+			);
+			name = Map;
+			path = Classes/Map;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2046,7 +2078,7 @@
 		CE67CAC51877FDC600E22A81 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0500;
 			};
 			buildConfigurationList = CE67CAC81877FDC600E22A81 /* Build configuration list for PBXProject "TeamProject" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -2078,9 +2110,11 @@
 				CE67CAED1877FDC700E22A81 /* Icon-Small-50.png in Resources */,
 				CE67CAEF1877FDC700E22A81 /* Icon-Small.png in Resources */,
 				CE67CAF11877FDC700E22A81 /* Icon-Small@2x.png in Resources */,
+				DED3617F187E97AB0031D9DE /* 26x26.png in Resources */,
 				CE67CAF31877FDC700E22A81 /* Icon.png in Resources */,
 				CE67CAF51877FDC700E22A81 /* Icon@2x.png in Resources */,
 				CE67CAF71877FDC700E22A81 /* iTunesArtwork in Resources */,
+				DED36181187EA6300031D9DE /* 2.png in Resources */,
 				CE67CB931877FDCC00E22A81 /* ChangeLog in Resources */,
 				CE67CCFD1877FDD700E22A81 /* project.pbxproj in Resources */,
 			);
@@ -2110,6 +2144,7 @@
 				CE67CB271877FDC900E22A81 /* CCActionTiledGrid.cpp in Sources */,
 				CE67CB2A1877FDC900E22A81 /* CCActionTween.cpp in Sources */,
 				CE67CB2E1877FDC900E22A81 /* CCAtlasNode.cpp in Sources */,
+				DED3617D187E7C900031D9DE /* RMMap.cpp in Sources */,
 				CE67CB311877FDC900E22A81 /* CCNode.cpp in Sources */,
 				CE67CB341877FDC900E22A81 /* CCCamera.cpp in Sources */,
 				CE67CB371877FDC900E22A81 /* CCConfiguration.cpp in Sources */,
@@ -2210,6 +2245,7 @@
 				CE67CCAE1877FDD400E22A81 /* unzip.cpp in Sources */,
 				CE67CCB11877FDD400E22A81 /* ZipUtils.cpp in Sources */,
 				CE67CCB61877FDD400E22A81 /* CCIMEDispatcher.cpp in Sources */,
+				DE27427F1889104000522D09 /* CCJSONConverter.cpp in Sources */,
 				CE67CCB91877FDD400E22A81 /* CCTextFieldTTF.cpp in Sources */,
 				CE67CCBD1877FDD400E22A81 /* CCTexture2D.cpp in Sources */,
 				CE67CCC01877FDD500E22A81 /* CCTextureAtlas.cpp in Sources */,
@@ -2316,6 +2352,7 @@
 				CE67CE241877FDDF00E22A81 /* cpBBTree.c in Sources */,
 				CE67CE261877FDDF00E22A81 /* cpBody.c in Sources */,
 				CE67CE281877FDDF00E22A81 /* cpCollision.c in Sources */,
+				DE2742801889104000522D09 /* cJSON.c in Sources */,
 				CE67CE2A1877FDDF00E22A81 /* cpHashSet.c in Sources */,
 				CE67CE2C1877FDDF00E22A81 /* cpPolyShape.c in Sources */,
 				CE67CE2E1877FDDF00E22A81 /* cpShape.c in Sources */,
@@ -2343,7 +2380,6 @@
 		CE67CE491877FDDF00E22A81 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -2366,7 +2402,8 @@
 					"\"$(PROJECT_NAME)/libs/cocos2dx/platform/third_party/ios\"",
 					"\"$(PROJECT_NAME)/libs/cocos2dx/platform/ios\"",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -2375,7 +2412,6 @@
 		CE67CE4A1877FDDF00E22A81 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2395,7 +2431,7 @@
 					"\"$(PROJECT_NAME)/libs/cocos2dx/platform/third_party/ios\"",
 					"\"$(PROJECT_NAME)/libs/cocos2dx/platform/ios\"",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2412,6 +2448,7 @@
 				GCC_PREFIX_HEADER = TeamProject/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = TeamProject/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/TeamProject/libs/cocos2dx/platform/third_party/ios/libraries\"",
@@ -2422,6 +2459,7 @@
 					"-lsqlite3",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 				USER_HEADER_SEARCH_PATHS = "\"TeamProject/libs/Chipmunk/include/chipmunk\"";
 				WRAPPER_EXTENSION = app;
 			};
@@ -2436,6 +2474,7 @@
 				GCC_PREFIX_HEADER = TeamProject/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = TeamProject/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/TeamProject/libs/cocos2dx/platform/third_party/ios/libraries\"",
@@ -2446,6 +2485,7 @@
 					"-lsqlite3",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 				USER_HEADER_SEARCH_PATHS = "\"TeamProject/libs/Chipmunk/include/chipmunk\"";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;

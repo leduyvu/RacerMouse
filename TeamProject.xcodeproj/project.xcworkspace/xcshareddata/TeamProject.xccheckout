@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>9E637569-D3A4-4B94-8987-4F95264A0689</string>
+	<key>IDESourceControlProjectName</key>
+	<string>TeamProject</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>C5BBAEF6-E9E4-48D2-BA39-63444A23867C</key>
+		<string>ssh://github.com/leduyvu/RacerMouse.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>TeamProject.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>C5BBAEF6-E9E4-48D2-BA39-63444A23867C</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/leduyvu/RacerMouse.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>C5BBAEF6-E9E4-48D2-BA39-63444A23867C</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C5BBAEF6-E9E4-48D2-BA39-63444A23867C</string>
+			<key>IDESourceControlWCCName</key>
+			<string>RacerMouse</string>
+		</dict>
+	</array>
+</dict>
+</plist>

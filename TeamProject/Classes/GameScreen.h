@@ -14,8 +14,11 @@
 #include "Character.h"
 #include "Cat.h"
 #include "Dog.h"
+#include "Map/RMMap.h"
 class GameScreen : public cocos2d::CCLayer
 {
+private:
+    RMMap *map;
 public:
     // Method 'init' in cocos2d-x returns bool, instead of 'id' in cocos2d-iphone (an object pointer)
     virtual bool init();

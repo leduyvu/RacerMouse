@@ -40,8 +40,11 @@ bool GameScreen::init()
     charac->create();
     charac->addToMap(ccp(200, 200), this);
     
+    initMap();
     return true;
 }
 
 void  GameScreen::initMap(){
+    map = RMMap::create();
+    this->addChild(map);
 }
