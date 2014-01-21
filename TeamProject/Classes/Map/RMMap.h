@@ -22,6 +22,7 @@ private:
     CCDictionary* mapInfo;
     CCArray* matrixInfo;
     CCArray* charactersInfo;
+    CCSpriteBatchNode* gameBatchNode;
     
 public:
     RMMap();
@@ -30,5 +31,6 @@ public:
     CREATE_FUNC(RMMap);
     void testCreateMap();
     void testLoadMap();
+    void testDraw();
 };
 #endif /* defined(__TeamProject__RMMap__) */

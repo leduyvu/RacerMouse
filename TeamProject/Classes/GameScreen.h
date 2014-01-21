@@ -15,10 +15,12 @@
 #include "Cat.h"
 #include "Dog.h"
 #include "Map/RMMap.h"
+#include "RMTiledMap.h"
 class GameScreen : public cocos2d::CCLayer
 {
 private:
-    RMMap *map;
+    RMTiledMap *tiledMap;
+    CCTMXLayer* meta;
 public:
     // Method 'init' in cocos2d-x returns bool, instead of 'id' in cocos2d-iphone (an object pointer)
     virtual bool init();
@@ -28,10 +30,13 @@ public:
     
     // a selector callback
     void menuCloseCallback(CCObject* pSender);
-    //init map
+    //map
     void initMap();
     // preprocessor macro for "static create()" constructor ( node() deprecated )
     CREATE_FUNC(GameScreen);
+    bool ccTouchBegan(CCTouch *touch, CCEvent *event);
+    void ccTouchEnded(CCTouch *touch, CCEvent *event);
+    void registerWithTouchDispatcher();
 };
 
 #endif /* defined(__TeamProject__GameScreen__) */

@@ -36,15 +36,59 @@ bool GameScreen::init()
         return false;
     }
     //init
-    Character *charac = new Cat();
-    charac->create();
-    charac->addToMap(ccp(200, 200), this);
+//    Character *charac = new Cat();
+//    charac->create();
+//    charac->addToMap(ccp(200, 200), this);
     
     initMap();
+    meta = tiledMap->getMetaLayer();
+    registerWithTouchDispatcher();
     return true;
 }
 
 void  GameScreen::initMap(){
-    map = RMMap::create();
-    this->addChild(map);
+    tiledMap = RMTiledMap::create();
+    tiledMap->retain();
+    this->addChild(tiledMap);
+    
+}
+
+#pragma mark - handle touches
+
+void GameScreen::registerWithTouchDispatcher() {
+    CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
+}
+
+bool GameScreen::ccTouchBegan(cocos2d::CCTouch *touch, cocos2d::CCEvent *event){
+    return true;
+}
+
+void GameScreen::ccTouchEnded(cocos2d::CCTouch *touch, cocos2d::CCEvent *event){
+    CCPoint touchLocation = touch->getLocationInView();
+    touchLocation = CCDirector::sharedDirector()->convertToGL(touchLocation);
+    touchLocation = this->convertToNodeSpace(touchLocation);
+    
+    CCPoint tileCoord = tiledMap->tileCoordForPosition(touchLocation);
+    // test
+    CCString *type = tiledMap->typeAtTileCoord(tileCoord);
+    
+//    CCLog("hang: %f, cot: %f", tileCoord.y, tileCoord.x);
+//    int tileGid = tiledMap->getTiledMap()->layerNamed("Meta")->tileGIDAt(tileCoord);
+//    CCLog("tileGid: %f", tileGid);
+//    if (tileGid) {
+//        CCDictionary *properties = tiledMap->getTiledMap()->propertiesForGID(tileGid);
+//        if (properties) {
+//            CCString *type = new CCString();
+//            *type = *properties->valueForKey("type");
+    if (type && (type->compare("-1") == 0)) {
+        return;
+    }
+    
+    if (type && type->compare("1") == 0) {
+        meta->removeTileAt(tileCoord);
+    }
+//        }
+//    }
+//    
+//    
 }

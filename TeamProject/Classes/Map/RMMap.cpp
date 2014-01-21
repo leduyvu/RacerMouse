@@ -20,14 +20,17 @@ bool RMMap::init()
 //    Character *charac = new Cat();
 //    charac->create();
 //    charac->addToMap(ccp(400,400), this);
-    
+    CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("spriteSheet.plist");
+    gameBatchNode = CCSpriteBatchNode::create("spriteSheet.png");
+    this->addChild(gameBatchNode);
     // test to create matrix
     mapInfo = CCDictionary::create();
     mapInfo->retain();
     matrixInfo = new CCArray;
     charactersInfo = new CCArray;
     testCreateMap();
-    testLoadMap();
+//    testLoadMap();
+    testDraw();
     return true;
 }
 
@@ -405,30 +408,50 @@ void RMMap::testLoadMap(){
     CCObject *obj1;
     CCARRAY_FOREACH(matrixInfo, obj1){
         CCArray* rowArray = dynamic_cast<CCArray*>(obj1);
+        rowArray->autorelease();
         CCObject *obj2;
         CCARRAY_FOREACH(rowArray, obj2){
             CCDictionary* squareInfo = CCDictionary::create();
-            CCSprite* squareSprite = CCSprite::create();
+            
             squareInfo = dynamic_cast<CCDictionary*>(obj2);
             int type = dynamic_cast<CCNumber*>(squareInfo->objectForKey("type"))->getIntValue();
             CCLog("type: %d", type);
             switch (type) {
                 case -1:
-                    squareSprite = CCSprite::create("2.png");
+                {
+                    CCDrawNode *circle = CCDrawNode::create();
+                    
+//                    for (float angle = 0; angle <= 2 * M_PI; angle += 0.01)
+//                    {
+//                        circle->drawSegment(Point(0.0, 0.0), Point(radius * cos(angle), radius * sin(angle)), 1, Color4F(1.0, 0.0, 0.0, 1.0));
+//                    }
+                    circle->drawDot(drawPosition, 2.0, ccc4FFromccc3B(ccc3(255, 0, 0)));
+                    this->addChild(circle);
                     break;
+                }
                     
                 case 0:
                     break;
                     
                 case 1:
-                    squareSprite = CCSprite::create("26x26.png");
+                {
+//                    CCSprite* squareSprite = CCSprite::create();
+//                    squareSprite = CCSprite::createWithSpriteFrameName("26x26.png");
+//                    squareSprite->setPosition(drawPosition);
+//                    this->addChild(squareSprite);
+                    CCDrawNode *wall = CCDrawNode::create();
+                    CCPoint filledVertices[] = { ccp(0,26), ccp(26,26), ccp(26,0), ccp(0,0)};
+                    wall->drawPolygon(filledVertices, 4, ccc4FFromccc3B(ccc3(0, 0, 255)), 0, ccc4FFromccc3B(ccc3(255, 255, 255)));
+                    wall->setPosition(drawPosition);
+                    this->addChild(wall);
                     break;
+                }
                 default:
                     break;
             }
             
-            squareSprite->setPosition(drawPosition);
-            this->addChild(squareSprite);
+            
+            
             
             // calculate to draw next position
             drawPosition = ccp(drawPosition.x + SIZE_COMPONENT, drawPosition.y);
@@ -438,7 +461,24 @@ void RMMap::testLoadMap(){
 }
 
 RMMap::~RMMap(){
+    CCObject* obj;
+    CCARRAY_FOREACH(matrixInfo, obj){
+        CC_SAFE_DELETE_ARRAY(obj);
+    }
     
+    CC_SAFE_DELETE_ARRAY(matrixInfo);
+    
+}
+
+void RMMap::testDraw(){
+    CCPoint drawPosition = ccp(MARGIN_WIDTH + SIZE_COMPONENT/2, 1024 -( MARGIN_HEIGHT + SIZE_COMPONENT/2));
+    CCDrawNode *wall = CCDrawNode::create();
+    CCPoint filledVertices[] = { ccp(20,20), ccp(20,40), ccp(40,40), ccp(40,20)};
+    wall->drawPolygon(filledVertices, 4, ccc4FFromccc3B(ccc3(0, 0, 255)), 0, ccc4FFromccc3B(ccc3(255, 255, 255)));
+//    wall->setPosition(drawPosition);
+    CCLog("fill rectangle is at position: %f and %f", wall->getPosition().x, wall->getPosition().y);
+    this->addChild(wall);
+
 }
 
 RMMap::RMMap(){
