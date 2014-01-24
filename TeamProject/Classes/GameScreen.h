@@ -16,15 +16,21 @@
 #include "Dog.h"
 #include "Map/RMMap.h"
 #include "RMTiledMap.h"
+#include "Player.h"
+#include <stdlib.h>     /* srand, rand */
+#include <time.h>
 class GameScreen : public cocos2d::CCLayer
 {
 private:
+    Character* player;
+//    Character* cat;
     RMTiledMap *tiledMap;
     CCTMXLayer* meta;
+    CCArray* arrCharacters;
 public:
     // Method 'init' in cocos2d-x returns bool, instead of 'id' in cocos2d-iphone (an object pointer)
     virtual bool init();
-    
+    ~GameScreen();
     // there's no 'id' in cpp, so we recommend to return the class instance pointer
     static cocos2d::CCScene* scene();
     
@@ -37,6 +43,7 @@ public:
     bool ccTouchBegan(CCTouch *touch, CCEvent *event);
     void ccTouchEnded(CCTouch *touch, CCEvent *event);
     void registerWithTouchDispatcher();
+    void autoPlay();
 };
 
 #endif /* defined(__TeamProject__GameScreen__) */

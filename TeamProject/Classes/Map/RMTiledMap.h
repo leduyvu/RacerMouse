@@ -26,6 +26,7 @@ public:
     CCTMXTiledMap* getTiledMap();
     CCPoint tileCoordForPosition(CCPoint position);
     CCString* typeAtTileCoord(CCPoint tileCoord);
+    CCPoint convertPosMapToPoint(CCPoint posMap);
 };
 
 #endif /* defined(__TeamProject__RMTiledMap__) */
