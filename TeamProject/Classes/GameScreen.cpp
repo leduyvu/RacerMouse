@@ -118,7 +118,7 @@ void GameScreen::ccTouchEnded(cocos2d::CCTouch *touch, cocos2d::CCEvent *event){
     // test
 //    CCString *type = tiledMap->typeAtTileCoord(tileCoord);
 //    CCLog("hang: %f, cot: %f", tileCoord.y, tileCoord.x);
-//    int tileGid = tiledMap->getTiledMap()->layerNamed("Meta")->tileGIDAt(tileCoord);
+//    int tileGid = tiledMap->getTiledMap()->layerNamed("Tile Layer 1")->tileGIDAt(tileCoord);
 //    CCLog("tileGid: %f", tileGid);
 //    if (tileGid) {
 //        CCDictionary *properties = tiledMap->getTiledMap()->propertiesForGID(tileGid);

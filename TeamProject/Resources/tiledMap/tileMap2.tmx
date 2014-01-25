@@ -18,7 +18,7 @@
    </properties>
   </tile>
  </tileset>
- <layer name="Tile Layer 1" width="26" height="29">
+ <layer name="Meta" width="26" height="29">
   <data encoding="base64" compression="zlib">
    eJzVVQEKgDAIdOv/f45gwThmnuaMBCFu6ul2ZBeR7vA23JODuXMNxBBnYrCn6/u2tsAQZ2IQq5wH/Qjev5Ub6dsTX83j0a8X12bZoQPUpSTyWIY1WMvgsXTA8Fj3I0qewJn3fWTErmo98Wi5c9wX8+x6H4aHsb/pzcuzqhn5t2fvBQ2P7u0KHvZOWF/VsXp9s+c8OzSLp2qfMv1G57T0tounwk/5XQN1
   </data>
