@@ -41,7 +41,7 @@ public:
     void moveRight(RMTiledMap *tiledMap);
     void moveBelow(RMTiledMap *tiledMap);
     void moveUpward(RMTiledMap *tiledMap);
-    
+    void setPosAgian(CCPoint location, CCLayer* layer, RMTiledMap *tiledMap);
     virtual void autoRun(RMTiledMap* tileMap);
 };
 #endif /* defined(__TeamProject__Character__) */
