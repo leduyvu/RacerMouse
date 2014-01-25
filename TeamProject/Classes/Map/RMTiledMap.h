@@ -19,6 +19,7 @@ class RMTiledMap : public cocos2d::CCLayer
 private:
     CCTMXTiledMap* tileMap;
     CCTMXLayer *meta;
+    int checkPush;
 public:
     virtual bool init();
     CREATE_FUNC(RMTiledMap);
