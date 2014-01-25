@@ -283,6 +283,8 @@
 		DEECE9FC188CEFB300C1AF51 /* 26x26.png in Resources */ = {isa = PBXBuildFile; fileRef = DEECE9FA188CEFB300C1AF51 /* 26x26.png */; };
 		DEECEA00188CFFDC00C1AF51 /* tileMap.tmx in Resources */ = {isa = PBXBuildFile; fileRef = DEECE9FF188CFFDC00C1AF51 /* tileMap.tmx */; };
 		DEECEA02188D144900C1AF51 /* meta.png in Resources */ = {isa = PBXBuildFile; fileRef = DEECEA01188D144900C1AF51 /* meta.png */; };
+		DEF204211893735F00EA6089 /* Meta2.png in Resources */ = {isa = PBXBuildFile; fileRef = DEF204201893735F00EA6089 /* Meta2.png */; };
+		DEF20423189376E500EA6089 /* tileMap2.tmx in Resources */ = {isa = PBXBuildFile; fileRef = DEF20422189376E500EA6089 /* tileMap2.tmx */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -877,6 +879,8 @@
 		DEECE9FA188CEFB300C1AF51 /* 26x26.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 26x26.png; sourceTree = "<group>"; };
 		DEECE9FF188CFFDC00C1AF51 /* tileMap.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = tileMap.tmx; sourceTree = "<group>"; };
 		DEECEA01188D144900C1AF51 /* meta.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meta.png; sourceTree = "<group>"; };
+		DEF204201893735F00EA6089 /* Meta2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Meta2.png; sourceTree = "<group>"; };
+		DEF20422189376E500EA6089 /* tileMap2.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = tileMap2.tmx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2076,6 +2080,8 @@
 			isa = PBXGroup;
 			children = (
 				DEECEA01188D144900C1AF51 /* meta.png */,
+				DEF204201893735F00EA6089 /* Meta2.png */,
+				DEF20422189376E500EA6089 /* tileMap2.tmx */,
 				DEECE9F9188CEFB300C1AF51 /* 2.png */,
 				DEECE9FF188CFFDC00C1AF51 /* tileMap.tmx */,
 				DEECE9FA188CEFB300C1AF51 /* 26x26.png */,
@@ -2139,6 +2145,7 @@
 				CE67CAE51877FDC700E22A81 /* CloseSelected.png in Resources */,
 				DEECE9F7188CEDAF00C1AF51 /* 2.png in Resources */,
 				CE67CAE71877FDC700E22A81 /* Default.png in Resources */,
+				DEF20423189376E500EA6089 /* tileMap2.tmx in Resources */,
 				DEECE9F8188CEDAF00C1AF51 /* 26x26.png in Resources */,
 				CE67CAE91877FDC700E22A81 /* HelloWorld.png in Resources */,
 				CE67CAEB1877FDC700E22A81 /* Icon-72.png in Resources */,
@@ -2149,6 +2156,7 @@
 				CE67CAF31877FDC700E22A81 /* Icon.png in Resources */,
 				CE67CAF51877FDC700E22A81 /* Icon@2x.png in Resources */,
 				DE5F6079188A65930014BE82 /* spriteSheet.png in Resources */,
+				DEF204211893735F00EA6089 /* Meta2.png in Resources */,
 				DE5F6078188A65930014BE82 /* spriteSheet.plist in Resources */,
 				CE67CAF71877FDC700E22A81 /* iTunesArtwork in Resources */,
 				DEECEA02188D144900C1AF51 /* meta.png in Resources */,

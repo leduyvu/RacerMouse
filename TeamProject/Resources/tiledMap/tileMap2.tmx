@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="26" height="29" tilewidth="26" tileheight="26">
+ <tileset firstgid="1" name="Meta2" tilewidth="26" tileheight="26">
+  <image source="Meta2.png" width="78" height="26"/>
+  <tile id="0">
+   <properties>
+    <property name="type" value="-1"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="type" value="1"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="type" value="2"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Tile Layer 1" width="26" height="29">
+  <data encoding="base64" compression="zlib">
+   eJzVVQEKgDAIdOv/f45gwThmnuaMBCFu6ul2ZBeR7vA23JODuXMNxBBnYrCn6/u2tsAQZ2IQq5wH/Qjev5Ub6dsTX83j0a8X12bZoQPUpSTyWIY1WMvgsXTA8Fj3I0qewJn3fWTErmo98Wi5c9wX8+x6H4aHsb/pzcuzqhn5t2fvBQ2P7u0KHvZOWF/VsXp9s+c8OzSLp2qfMv1G57T0tounwk/5XQN1
+  </data>
+ </layer>
+</map>
