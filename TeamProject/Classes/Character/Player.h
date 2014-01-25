@@ -16,5 +16,6 @@ public:
     Player();
     ~Player();
     void create();
+    void autoRun(RMTiledMap* tileMap);
 };
 #endif /* defined(__TeamProject__Player__) */

@@ -52,3 +52,9 @@ CCString* RMTiledMap::typeAtTileCoord(cocos2d::CCPoint tileCoord){
     }
     return NULL;
 }
+
+CCPoint RMTiledMap::convertPosMapToPoint(CCPoint posMap){
+    int x = this->getPosition().x + tileMap->getMapSize().width * (posMap.x) + tileMap->getMapSize().width/2;
+    int y = this->getPosition().y + tileMap->getMapSize().width * (29 - posMap.y) - tileMap->getMapSize().width/2;
+    return ccp(x, y);
+}

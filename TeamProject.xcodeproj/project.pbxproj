@@ -13,6 +13,8 @@
 		CE0181E1187A813F00840F8B /* Dog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0181DF187A813F00840F8B /* Dog.cpp */; };
 		CE0181E5187A929D00840F8B /* GameScreen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0181E3187A929C00840F8B /* GameScreen.cpp */; };
 		CE0181E8187A956300840F8B /* GameMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0181E6187A956200840F8B /* GameMenu.cpp */; };
+		CE65A6DC18922927004F84A5 /* blue.png in Resources */ = {isa = PBXBuildFile; fileRef = CE65A6DB18922926004F84A5 /* blue.png */; };
+		CE65A6DE18925D0D004F84A5 /* Character in Resources */ = {isa = PBXBuildFile; fileRef = CE65A6DD18925D0C004F84A5 /* Character */; };
 		CE67CAD11877FDC700E22A81 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE67CAD01877FDC700E22A81 /* QuartzCore.framework */; };
 		CE67CAD31877FDC700E22A81 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE67CAD21877FDC700E22A81 /* OpenGLES.framework */; };
 		CE67CAD51877FDC700E22A81 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE67CAD41877FDC700E22A81 /* OpenAL.framework */; };
@@ -301,6 +303,8 @@
 		CE0181E4187A929D00840F8B /* GameScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameScreen.h; path = Classes/GameScreen.h; sourceTree = "<group>"; };
 		CE0181E6187A956200840F8B /* GameMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameMenu.cpp; path = Classes/GameMenu.cpp; sourceTree = "<group>"; };
 		CE0181E7187A956200840F8B /* GameMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameMenu.h; path = Classes/GameMenu.h; sourceTree = "<group>"; };
+		CE65A6DB18922926004F84A5 /* blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blue.png; path = Resources/blue.png; sourceTree = "<group>"; };
+		CE65A6DD18925D0C004F84A5 /* Character */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Character; path = Resources/Character; sourceTree = "<group>"; };
 		CE67CACD1877FDC700E22A81 /* TeamProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeamProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE67CAD01877FDC700E22A81 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		CE67CAD21877FDC700E22A81 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -967,6 +971,8 @@
 		CE67CAE11877FDC700E22A81 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CE65A6DD18925D0C004F84A5 /* Character */,
+				CE65A6DB18922926004F84A5 /* blue.png */,
 				DEECE9F5188CEDAF00C1AF51 /* 2.png */,
 				DEECE9F6188CEDAF00C1AF51 /* 26x26.png */,
 				CE67CAE21877FDC700E22A81 /* CloseNormal.png */,
@@ -2163,6 +2169,8 @@
 				DEECE9FB188CEFB300C1AF51 /* 2.png in Resources */,
 				CE67CB931877FDCC00E22A81 /* ChangeLog in Resources */,
 				CE67CCFD1877FDD700E22A81 /* project.pbxproj in Resources */,
+				CE65A6DC18922927004F84A5 /* blue.png in Resources */,
+				CE65A6DE18925D0D004F84A5 /* Character in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

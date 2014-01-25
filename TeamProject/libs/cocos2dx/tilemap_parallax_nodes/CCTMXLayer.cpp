@@ -312,7 +312,6 @@ CCSprite* CCTMXLayer::reusedTileWithRect(CCRect rect)
 		// restore the batch node
         m_pReusedTile->setBatchNode(this);
     }
-
     return m_pReusedTile;
 }
 
@@ -324,7 +323,6 @@ CCSprite * CCTMXLayer::tileAt(const CCPoint& pos)
 
     CCSprite *tile = NULL;
     unsigned int gid = this->tileGIDAt(pos);
-
     // if GID == 0, then no tile is present
     if (gid) 
     {

@@ -16,5 +16,6 @@ public:
     Cat();
     ~Cat();
     void create();
+    void autoRun(RMTiledMap* tileMap);
 };
 #endif /* defined(__TeamProject__Cat__) */
