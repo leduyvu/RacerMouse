@@ -24,13 +24,15 @@ class GameScreen : public cocos2d::CCLayer
 {
 private:
     Character* player;
-//    Character* cat;
+    Character* cat;
     RMTiledMap *tiledMap;
     CCTMXLayer* meta;
     CCArray* arrCharacters;
+    
     CCArray *_arrItems;
     CCArray *_arrItemsRemove;
     CCSize size;
+    CCArray* arrPlayers;
 public:
     // Method 'init' in cocos2d-x returns bool, instead of 'id' in cocos2d-iphone (an object pointer)
     virtual bool init();
