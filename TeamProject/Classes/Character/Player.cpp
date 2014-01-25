@@ -8,7 +8,8 @@
 
 #include "Player.h"
 Player::Player(){
-    this->setVelocity(0.2);
+    this->setVelocity(VELOCITY_PLAYER);
+    this->setIDCharac(ID_PLAYER);
 }
 Player::~Player(){
 }

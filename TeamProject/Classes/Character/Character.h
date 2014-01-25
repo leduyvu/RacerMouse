@@ -14,6 +14,7 @@
 #include "Definition.h"
 #include "RMTiledMap.h"
 USING_NS_CC;
+using namespace std;
 class Character : public CCObject{
 protected:
     CC_SYNTHESIZE(CCSprite*, spr, Sprite);
@@ -21,11 +22,10 @@ private:
     int objectID;
     CC_SYNTHESIZE(CCPoint, position, Position);
     int direction;
-//    float timeVelocity;
     CC_SYNTHESIZE(float, timeVelocity, Velocity);
     CC_SYNTHESIZE(int, runValue, RunValue);
     CC_SYNTHESIZE(int, runCurrent, RunCurrent);
-//    RMTiledMap *tiledMap;
+    CC_SYNTHESIZE(int, idCharac, IDCharac);// type of Character
 public:
     Character();
     ~Character();
@@ -43,5 +43,9 @@ public:
     void moveUpward(RMTiledMap *tiledMap);
     void setPosAgian(CCPoint location, CCLayer* layer, RMTiledMap *tiledMap);
     virtual void autoRun(RMTiledMap* tileMap);
+    
+    //animation
+    void transformation(int idCharac);
+    void setSpriteWithIDCharac(CCNode* sender, void *data);
 };
 #endif /* defined(__TeamProject__Character__) */

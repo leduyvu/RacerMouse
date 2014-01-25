@@ -27,6 +27,9 @@ CCScene* GameScreen::scene()
 // on "init" you need to initialize your instance
 bool GameScreen::init()
 {
+    //test Win
+    isSlow = false;
+    countKey = 100;
     srand (time(NULL));
     // 1. super init first
     if ( !CCLayer::init() )
@@ -70,14 +73,19 @@ bool GameScreen::init()
     cat3->setRunValue(2);
     arrCharacters->addObject(cat3);
 
+    this->schedule(schedule_selector(GameScreen::autoPlay), VELOCITY_PLAYER);
+    this->schedule(schedule_selector(GameScreen::autoCharactersPlay), VELOCITY_NORMAL);
+    
+    /*****************DU************/
     this->drawListItem(CCPoint(size.width / 12, size.height - size.height/10));
     for (int i = 1; i <= 9; i ++) {
         CCPoint p = CCPoint(rand() % 20 + 1, rand() % 20 + 1);
         this->addItem(i, p);
     } 
     
-    this->schedule(schedule_selector(GameScreen::autoPlay), 0.2);
-    this->schedule(schedule_selector(GameScreen::update));
+//    this->schedule(schedule_selector(GameScreen::update), 0.2);
+    //end DU
+    
     return true;
 }
 
@@ -172,27 +180,23 @@ void GameScreen::ccTouchEnded(cocos2d::CCTouch *touch, cocos2d::CCEvent *event){
     touchLocation = CCDirector::sharedDirector()->convertToGL(touchLocation);
     touchLocation = this->convertToNodeSpace(touchLocation);
     
-    CCPoint tileCoord = tiledMap->tileCoordForPosition(touchLocation);
-    // test
-//    CCString *type = tiledMap->typeAtTileCoord(tileCoord);
-//    CCLog("hang: %f, cot: %f", tileCoord.y, tileCoord.x);
-//    int tileGid = tiledMap->getTiledMap()->layerNamed("Tile Layer 1")->tileGIDAt(tileCoord);
-//    CCLog("tileGid: %f", tileGid);
-//    if (tileGid) {
-//        CCDictionary *properties = tiledMap->getTiledMap()->propertiesForGID(tileGid);
-//        if (properties) {
-//            CCString *type = new CCString();
-//            *type = *properties->valueForKey("type");
-//    if (type && (type->compare("-1") == 0)) {
-//        return;
-//    }
-//    
-//    if (type && type->compare("1") == 0) {
-//        meta->removeTileAt(tileCoord);
-//    }
+//    CCPoint tileCoord = tiledMap->tileCoordForPosition(touchLocation);
 }
 
-void GameScreen::autoPlay(){
+void GameScreen::autoCharactersPlay(){
+    if (isSlow) {
+        timeSlow++;
+    }
+    else{
+        timeSlow = 0;
+    }
+    if(timeSlow >= 50){
+        normalCharacters();
+        timeSlow = 0;
+        isSlow = false;
+        return;
+    }
+    
     CCObject* obj;
     CCARRAY_FOREACH(arrCharacters, obj)
     {
@@ -320,27 +324,36 @@ void GameScreen::autoPlay(){
             }
         }
     }
+}
+
+void GameScreen::autoPlay(){
     //player
     CCObject* objPlayer;
     CCARRAY_FOREACH(arrPlayers, objPlayer){
         Character* player = dynamic_cast<Character*>(objPlayer);
+        eatKey(player);
         if(player->getRunValue() == 1){
             if(player->checkRight(tiledMap, player->getPosition())){
                 player->moveRight(tiledMap);
+//                eatKey(player);
             }
             else{
                 switch (player->getRunCurrent()) {
                     case 1:
                         player->moveRight(tiledMap);
+//                        eatKey(player);
                         break;
                     case 2:
                         player->moveLeft(tiledMap);
+//                        eatKey(player);
                         break;
                     case 3:
                         player->moveUpward(tiledMap);
+//                        eatKey(player);
                         break;
                     case 4:
                         player->moveBelow(tiledMap);
+//                        eatKey(player);
                         break;
                     default:
                         break;
@@ -350,20 +363,25 @@ void GameScreen::autoPlay(){
         else if(player->getRunValue() == 2){
             if(player->checkLeft(tiledMap, player->getPosition())){
                 player->moveLeft(tiledMap);
+//                eatKey(player);
             }
             else{
                 switch (player->getRunCurrent()) {
                     case 1:
                         player->moveRight(tiledMap);
+//                        eatKey(player);
                         break;
                     case 2:
                         player->moveLeft(tiledMap);
+//                        eatKey(player);
                         break;
                     case 3:
                         player->moveUpward(tiledMap);
+//                        eatKey(player);
                         break;
                     case 4:
                         player->moveBelow(tiledMap);
+//                        eatKey(player);
                         break;
                     default:
                         break;
@@ -373,20 +391,25 @@ void GameScreen::autoPlay(){
         else if(player->getRunValue() == 3){
             if(player->checkUpward(tiledMap, player->getPosition())){
                 player->moveUpward(tiledMap);
+//                eatKey(player);
             }
             else{
                 switch (player->getRunCurrent()) {
                     case 1:
+//                        eatKey(player);
                         player->moveRight(tiledMap);
                         break;
                     case 2:
                         player->moveLeft(tiledMap);
+//                        eatKey(player);
                         break;
                     case 3:
                         player->moveUpward(tiledMap);
+//                        eatKey(player);
                         break;
                     case 4:
                         player->moveBelow(tiledMap);
+//                        eatKey(player);
                         break;
                     default:
                         break;
@@ -396,20 +419,25 @@ void GameScreen::autoPlay(){
         else if(player->getRunValue() == 4){
             if(player->checkBelow(tiledMap, player->getPosition())){
                 player->moveBelow(tiledMap);
+//                eatKey(player);
             }
             else{
                 switch (player->getRunCurrent()) {
                     case 1:
                         player->moveRight(tiledMap);
+//                        eatKey(player);
                         break;
                     case 2:
                         player->moveLeft(tiledMap);
+//                        eatKey(player);
                         break;
                     case 3:
                         player->moveUpward(tiledMap);
+//                        eatKey(player);
                         break;
                     case 4:
                         player->moveBelow(tiledMap);
+//                        eatKey(player);
                         break;
                     default:
                         break;
@@ -454,9 +482,31 @@ void GameScreen::removeItem(Item *item) {
 }
 GameScreen::~GameScreen(){
     delete arrCharacters;
-    arrCharacters = NULL;
-//    player->release();
-    
+    arrCharacters = NULL;    
     delete arrPlayers;
     arrPlayers = NULL;
+    
+    //du
+    delete _arrItems;
+    _arrItems = NULL;
+    delete _arrItemsRemove;
+    _arrItemsRemove = NULL;
+}
+
+void GameScreen::eatKey(Character* player){
+    CCString *type = tiledMap->typeAtTileCoord(ccp(player->getPosition().x, player->getPosition().y));
+    if (type && type->compare("1") == 0) {
+        meta->removeTileAt(player->getPosition());
+        countKey--;
+    }
+//    if(countKey == 90){
+//        player->transformation(4);
+//        slowCharacters();
+//    }
+    if (type && type->compare("2") == 0) {
+        meta->removeTileAt(player->getPosition());
+        player->transformation(4);
+        slowCharacters();
+        timeSlow = 0;
+    }
 }

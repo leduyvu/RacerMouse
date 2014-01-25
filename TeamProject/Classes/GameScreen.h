@@ -33,6 +33,9 @@ private:
     CCArray *_arrItemsRemove;
     CCSize size;
     CCArray* arrPlayers;
+    int countKey;
+    bool isSlow;
+    int timeSlow;
 public:
     // Method 'init' in cocos2d-x returns bool, instead of 'id' in cocos2d-iphone (an object pointer)
     virtual bool init();
@@ -49,12 +52,24 @@ public:
     bool ccTouchBegan(CCTouch *touch, CCEvent *event);
     void ccTouchEnded(CCTouch *touch, CCEvent *event);
     void registerWithTouchDispatcher();
+    
+    //automation
+    void autoCharactersPlay();
     void autoPlay();
+    
+    /************************** ITEM ***********************/
+    //slow after eat item
+    void slowCharacters();
+    void normalCharacters();
+    void itemICE();
+    /*********************** end Item ***********************/
+    
+    void eatKey(Character* player);
     void update(float dt);
     //Items
     void addItem(int typeItem, CCPoint position);
     void drawListItem(CCPoint p);
     void removeItem(Item *item);
-};
+ };
 
 #endif /* defined(__TeamProject__GameScreen__) */

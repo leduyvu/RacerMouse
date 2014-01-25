@@ -16,5 +16,6 @@ public:
     Dog();
     ~Dog();
     void create();
+    void autoRun(RMTiledMap* tileMap);
 };
 #endif /* defined(__TeamProject__Dog__) */
