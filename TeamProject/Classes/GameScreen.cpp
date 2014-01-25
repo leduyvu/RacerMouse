@@ -27,6 +27,8 @@ CCScene* GameScreen::scene()
 // on "init" you need to initialize your instance
 bool GameScreen::init()
 {
+    //test Win
+    countKey = 100;
     srand (time(NULL));
     // 1. super init first
     if ( !CCLayer::init() )
@@ -269,20 +271,25 @@ void GameScreen::autoPlay(){
         if(player->getRunValue() == 1){
             if(player->checkRight(tiledMap, player->getPosition())){
                 player->moveRight(tiledMap);
+                eatKey(player);
             }
             else{
                 switch (player->getRunCurrent()) {
                     case 1:
                         player->moveRight(tiledMap);
+                        eatKey(player);
                         break;
                     case 2:
                         player->moveLeft(tiledMap);
+                        eatKey(player);
                         break;
                     case 3:
                         player->moveUpward(tiledMap);
+                        eatKey(player);
                         break;
                     case 4:
                         player->moveBelow(tiledMap);
+                        eatKey(player);
                         break;
                     default:
                         break;
@@ -292,20 +299,25 @@ void GameScreen::autoPlay(){
         else if(player->getRunValue() == 2){
             if(player->checkLeft(tiledMap, player->getPosition())){
                 player->moveLeft(tiledMap);
+                eatKey(player);
             }
             else{
                 switch (player->getRunCurrent()) {
                     case 1:
                         player->moveRight(tiledMap);
+                        eatKey(player);
                         break;
                     case 2:
                         player->moveLeft(tiledMap);
+                        eatKey(player);
                         break;
                     case 3:
                         player->moveUpward(tiledMap);
+                        eatKey(player);
                         break;
                     case 4:
                         player->moveBelow(tiledMap);
+                        eatKey(player);
                         break;
                     default:
                         break;
@@ -315,20 +327,25 @@ void GameScreen::autoPlay(){
         else if(player->getRunValue() == 3){
             if(player->checkUpward(tiledMap, player->getPosition())){
                 player->moveUpward(tiledMap);
+                eatKey(player);
             }
             else{
                 switch (player->getRunCurrent()) {
                     case 1:
+                        eatKey(player);
                         player->moveRight(tiledMap);
                         break;
                     case 2:
                         player->moveLeft(tiledMap);
+                        eatKey(player);
                         break;
                     case 3:
                         player->moveUpward(tiledMap);
+                        eatKey(player);
                         break;
                     case 4:
                         player->moveBelow(tiledMap);
+                        eatKey(player);
                         break;
                     default:
                         break;
@@ -338,20 +355,25 @@ void GameScreen::autoPlay(){
         else if(player->getRunValue() == 4){
             if(player->checkBelow(tiledMap, player->getPosition())){
                 player->moveBelow(tiledMap);
+                eatKey(player);
             }
             else{
                 switch (player->getRunCurrent()) {
                     case 1:
                         player->moveRight(tiledMap);
+                        eatKey(player);
                         break;
                     case 2:
                         player->moveLeft(tiledMap);
+                        eatKey(player);
                         break;
                     case 3:
                         player->moveUpward(tiledMap);
+                        eatKey(player);
                         break;
                     case 4:
                         player->moveBelow(tiledMap);
+                        eatKey(player);
                         break;
                     default:
                         break;
@@ -368,4 +390,15 @@ GameScreen::~GameScreen(){
     
     delete arrPlayers;
     arrPlayers = NULL;
+}
+
+void GameScreen::eatKey(Character* player){
+    CCString *type = tiledMap->typeAtTileCoord(ccp(player->getPosition().x, player->getPosition().y));
+    if (type && type->compare("1") == 0) {
+        meta->removeTileAt(player->getPosition());
+        countKey--;
+    }
+    if(countKey <= 0){
+        CCLOG("Win");
+    }
 }

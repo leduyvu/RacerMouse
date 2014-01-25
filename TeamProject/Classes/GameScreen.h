@@ -28,6 +28,7 @@ private:
     CCTMXLayer* meta;
     CCArray* arrCharacters;
     CCArray* arrPlayers;
+    int countKey;
 public:
     // Method 'init' in cocos2d-x returns bool, instead of 'id' in cocos2d-iphone (an object pointer)
     virtual bool init();
@@ -45,6 +46,7 @@ public:
     void ccTouchEnded(CCTouch *touch, CCEvent *event);
     void registerWithTouchDispatcher();
     void autoPlay();
+    void eatKey(Character* player);
 };
 
 #endif /* defined(__TeamProject__GameScreen__) */
