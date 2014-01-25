@@ -40,7 +40,7 @@ bool GameScreen::init()
     registerWithTouchDispatcher();
     
     arrPlayers = new CCArray();
-    Character* player = new Player();
+    player = new Player();
     player->create();
     player->setRunValue(1);
     player->addToMap(ccp(3, 4), this, tiledMap);
@@ -72,7 +72,8 @@ bool GameScreen::init()
 
     this->drawListItem(CCPoint(size.width / 12, size.height - size.height/10));
     for (int i = 1; i <= 9; i ++) {
-        this->addItem(i, CCPoint(rand() % 20 + 1, rand() % 20 + 1));
+        CCPoint p = CCPoint(rand() % 20 + 1, rand() % 20 + 1);
+        this->addItem(i, p);
     } 
     
     this->schedule(schedule_selector(GameScreen::autoPlay), 0.2);
@@ -175,7 +176,7 @@ void GameScreen::ccTouchEnded(cocos2d::CCTouch *touch, cocos2d::CCEvent *event){
     // test
 //    CCString *type = tiledMap->typeAtTileCoord(tileCoord);
 //    CCLog("hang: %f, cot: %f", tileCoord.y, tileCoord.x);
-//    int tileGid = tiledMap->getTiledMap()->layerNamed("Meta")->tileGIDAt(tileCoord);
+//    int tileGid = tiledMap->getTiledMap()->layerNamed("Tile Layer 1")->tileGIDAt(tileCoord);
 //    CCLog("tileGid: %f", tileGid);
 //    if (tileGid) {
 //        CCDictionary *properties = tiledMap->getTiledMap()->propertiesForGID(tileGid);

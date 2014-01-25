@@ -16,7 +16,7 @@ bool RMTiledMap::init(){
 //    TMX tile map: Only base64 and/or gzip/zlib maps are supported
 //    TMX: Only 1 tileset per layer is supported
     tileMap = new CCTMXTiledMap();
-    tileMap->initWithTMXFile("tileMap.tmx");
+    tileMap->initWithTMXFile("tileMap2.tmx");
     tileMap->retain();
     meta = tileMap->layerNamed("Meta");
     meta->retain();
