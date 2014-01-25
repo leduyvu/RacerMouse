@@ -11,6 +11,7 @@ Character::Character(){
 }
 
 Character::~Character(){
+    this->spr->release();
 }
 
 void Character::autoRun(RMTiledMap* tileMap){
@@ -32,7 +33,7 @@ bool Character::checkLeft(RMTiledMap *tiledMap, CCPoint currenPos){
     if(currenPos.x <= 0)
         return false;
     CCString *type = tiledMap->typeAtTileCoord(ccp(currenPos.x - 1 , currenPos.y));
-    if (type && type->compare("1") == 0 && currenPos.x > 0) {
+    if (type && (type->compare("1") == 0 || type->compare("2") == 0) && currenPos.x > 0) {
         return true;
     }
     else if(type == NULL){
@@ -48,7 +49,7 @@ bool Character::checkRight(RMTiledMap *tiledMap, CCPoint currenPos){
     if(currenPos.x >= 25)
         return false;
     CCString *type = tiledMap->typeAtTileCoord(ccp(currenPos.x + 1 , currenPos.y));
-    if (type && type->compare("1") == 0 && currenPos.x < 25) {
+    if (type && (type->compare("1") == 0 || type->compare("2") == 0) && currenPos.x < 25) {
         return true;
     }
     else if(type == NULL){
@@ -61,7 +62,7 @@ bool Character::checkBelow(RMTiledMap *tiledMap, CCPoint currenPos){
     if(currenPos.y >= 28)
         return false;
     CCString *type = tiledMap->typeAtTileCoord(ccp(currenPos.x, currenPos.y + 1));
-    if (type && type->compare("1") == 0) {
+    if (type && (type->compare("1") == 0 || type->compare("2") == 0)) {
         return true;
     }
     else if(type == NULL){
@@ -74,7 +75,7 @@ bool Character::checkUpward(RMTiledMap *tiledMap, CCPoint currenPos){
     if(currenPos.y <= 0)
         return false;
     CCString *type = tiledMap->typeAtTileCoord(ccp(currenPos.x, currenPos.y - 1));
-    if (type && type->compare("1") == 0) {
+    if (type && (type->compare("1") == 0 || type->compare("2") == 0)) {
         return true;
     }
     else if(type == NULL){
@@ -127,4 +128,37 @@ void Character::moveUpward(RMTiledMap *tiledMap){
 void Character::setPosAgian(CCPoint location, CCLayer* layer, RMTiledMap *tiledMap){
     this->position  = location;
     this->spr->setPosition(tiledMap->convertPosMapToPoint(location));
+}
+
+void Character::transformation(int idCharac){
+    if(idCharac == 1){
+        
+    }
+    else if (idCharac == 2){
+    
+    }
+    else if (idCharac == 3){
+        
+    }
+    else if (idCharac == 4){
+        CCAnimation *animation = CCAnimation::create();
+        for (int i = 1; i <= 6; i++)
+        {
+            std::string str = static_cast<ostringstream*>(&(ostringstream() << i))->str();
+            str = "Animation/Transformation/fx0" + str + ".png";
+            animation->addSpriteFrameWithFileName(str.c_str());
+        }
+        animation->setDelayPerUnit(0.02);
+        animation->setLoops(1);
+        animation->setRestoreOriginalFrame(true);
+        CCAnimate *action = CCAnimate::create(animation);
+        this->getSprite()->runAction(CCSequence::create(action,
+                                                        CCDelayTime::create(0.8),
+                                                        CCCallFuncND::create(this,callfuncND_selector(Character::setSpriteWithIDCharac),(void*)(new int(1))),
+                                                        NULL));
+    }
+}
+
+void Character::setSpriteWithIDCharac(CCNode* sender, void* idCharac){
+    this->spr->setTexture(CCSprite::create("blue.png")->getTexture());
 }

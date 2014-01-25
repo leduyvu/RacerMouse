@@ -8,7 +8,8 @@
 
 #include "Cat.h"
 Cat::Cat(){
-    this->setVelocity(0.2);
+    this->setVelocity(VELOCITY_CAT);
+    this->setIDCharac(ID_CAT);
 }
 Cat::~Cat(){
 }

@@ -13,6 +13,7 @@
 		CE0181E1187A813F00840F8B /* Dog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0181DF187A813F00840F8B /* Dog.cpp */; };
 		CE0181E5187A929D00840F8B /* GameScreen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0181E3187A929C00840F8B /* GameScreen.cpp */; };
 		CE0181E8187A956300840F8B /* GameMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0181E6187A956200840F8B /* GameMenu.cpp */; };
+		CE0E97781893AC3800A75EAB /* Animation in Resources */ = {isa = PBXBuildFile; fileRef = CE0E97771893AC3800A75EAB /* Animation */; };
 		CE65A6DC18922927004F84A5 /* blue.png in Resources */ = {isa = PBXBuildFile; fileRef = CE65A6DB18922926004F84A5 /* blue.png */; };
 		CE65A6DE18925D0D004F84A5 /* Character in Resources */ = {isa = PBXBuildFile; fileRef = CE65A6DD18925D0C004F84A5 /* Character */; };
 		CE67CAD11877FDC700E22A81 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE67CAD01877FDC700E22A81 /* QuartzCore.framework */; };
@@ -285,6 +286,8 @@
 		DEECE9FC188CEFB300C1AF51 /* 26x26.png in Resources */ = {isa = PBXBuildFile; fileRef = DEECE9FA188CEFB300C1AF51 /* 26x26.png */; };
 		DEECEA00188CFFDC00C1AF51 /* tileMap.tmx in Resources */ = {isa = PBXBuildFile; fileRef = DEECE9FF188CFFDC00C1AF51 /* tileMap.tmx */; };
 		DEECEA02188D144900C1AF51 /* meta.png in Resources */ = {isa = PBXBuildFile; fileRef = DEECEA01188D144900C1AF51 /* meta.png */; };
+		DEF204211893735F00EA6089 /* Meta2.png in Resources */ = {isa = PBXBuildFile; fileRef = DEF204201893735F00EA6089 /* Meta2.png */; };
+		DEF20423189376E500EA6089 /* tileMap2.tmx in Resources */ = {isa = PBXBuildFile; fileRef = DEF20422189376E500EA6089 /* tileMap2.tmx */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -301,6 +304,7 @@
 		CE0181E4187A929D00840F8B /* GameScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameScreen.h; path = Classes/GameScreen.h; sourceTree = "<group>"; };
 		CE0181E6187A956200840F8B /* GameMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameMenu.cpp; path = Classes/GameMenu.cpp; sourceTree = "<group>"; };
 		CE0181E7187A956200840F8B /* GameMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameMenu.h; path = Classes/GameMenu.h; sourceTree = "<group>"; };
+		CE0E97771893AC3800A75EAB /* Animation */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Animation; path = Resources/Animation; sourceTree = "<group>"; };
 		CE65A6DB18922926004F84A5 /* blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blue.png; path = Resources/blue.png; sourceTree = "<group>"; };
 		CE65A6DD18925D0C004F84A5 /* Character */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Character; path = Resources/Character; sourceTree = "<group>"; };
 		CE67CACD1877FDC700E22A81 /* TeamProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeamProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -881,6 +885,8 @@
 		DEECE9FA188CEFB300C1AF51 /* 26x26.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 26x26.png; sourceTree = "<group>"; };
 		DEECE9FF188CFFDC00C1AF51 /* tileMap.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = tileMap.tmx; sourceTree = "<group>"; };
 		DEECEA01188D144900C1AF51 /* meta.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meta.png; sourceTree = "<group>"; };
+		DEF204201893735F00EA6089 /* Meta2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Meta2.png; sourceTree = "<group>"; };
+		DEF20422189376E500EA6089 /* tileMap2.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = tileMap2.tmx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -967,6 +973,7 @@
 		CE67CAE11877FDC700E22A81 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CE0E97771893AC3800A75EAB /* Animation */,
 				CE65A6DD18925D0C004F84A5 /* Character */,
 				CE65A6DB18922926004F84A5 /* blue.png */,
 				DEECE9F5188CEDAF00C1AF51 /* 2.png */,
@@ -2082,6 +2089,8 @@
 			isa = PBXGroup;
 			children = (
 				DEECEA01188D144900C1AF51 /* meta.png */,
+				DEF204201893735F00EA6089 /* Meta2.png */,
+				DEF20422189376E500EA6089 /* tileMap2.tmx */,
 				DEECE9F9188CEFB300C1AF51 /* 2.png */,
 				DEECE9FF188CFFDC00C1AF51 /* tileMap.tmx */,
 				DEECE9FA188CEFB300C1AF51 /* 26x26.png */,
@@ -2145,6 +2154,7 @@
 				CE67CAE51877FDC700E22A81 /* CloseSelected.png in Resources */,
 				DEECE9F7188CEDAF00C1AF51 /* 2.png in Resources */,
 				CE67CAE71877FDC700E22A81 /* Default.png in Resources */,
+				DEF20423189376E500EA6089 /* tileMap2.tmx in Resources */,
 				DEECE9F8188CEDAF00C1AF51 /* 26x26.png in Resources */,
 				CE67CAE91877FDC700E22A81 /* HelloWorld.png in Resources */,
 				CE67CAEB1877FDC700E22A81 /* Icon-72.png in Resources */,
@@ -2155,6 +2165,7 @@
 				CE67CAF31877FDC700E22A81 /* Icon.png in Resources */,
 				CE67CAF51877FDC700E22A81 /* Icon@2x.png in Resources */,
 				DE5F6079188A65930014BE82 /* spriteSheet.png in Resources */,
+				DEF204211893735F00EA6089 /* Meta2.png in Resources */,
 				DE5F6078188A65930014BE82 /* spriteSheet.plist in Resources */,
 				CE67CAF71877FDC700E22A81 /* iTunesArtwork in Resources */,
 				DEECEA02188D144900C1AF51 /* meta.png in Resources */,
@@ -2163,6 +2174,7 @@
 				CE67CCFD1877FDD700E22A81 /* project.pbxproj in Resources */,
 				CE65A6DC18922927004F84A5 /* blue.png in Resources */,
 				CE65A6DE18925D0D004F84A5 /* Character in Resources */,
+				CE0E97781893AC3800A75EAB /* Animation in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

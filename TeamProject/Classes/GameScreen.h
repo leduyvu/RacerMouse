@@ -29,6 +29,9 @@ private:
     CCArray* arrCharacters;
     CCArray* arrPlayers;
     int countKey;
+    bool isSlow;
+    int timeSlow;
+    void normalCharacters();
 public:
     // Method 'init' in cocos2d-x returns bool, instead of 'id' in cocos2d-iphone (an object pointer)
     virtual bool init();
@@ -45,7 +48,14 @@ public:
     bool ccTouchBegan(CCTouch *touch, CCEvent *event);
     void ccTouchEnded(CCTouch *touch, CCEvent *event);
     void registerWithTouchDispatcher();
+    
+    //automation
+    void autoCharactersPlay();
     void autoPlay();
+    
+    //slow after eat item
+    void slowCharacters();
+    
     void eatKey(Character* player);
 };
 
