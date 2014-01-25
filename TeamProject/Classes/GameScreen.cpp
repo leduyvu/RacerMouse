@@ -36,6 +36,7 @@ bool GameScreen::init()
     {
         return false;
     }
+    size = CCDirector::sharedDirector()->getWinSize();
     //init map
     initMap();
     meta = tiledMap->getMetaLayer();
@@ -46,6 +47,8 @@ bool GameScreen::init()
     player->setRunValue(1);
     player->addToMap(ccp(3, 4), this, tiledMap);
     
+    _arrItems = new CCArray();
+    _arrItemsRemove = new CCArray();
     arrCharacters = new CCArray;
     Character* cat;
     cat = new Cat();
@@ -68,8 +71,13 @@ bool GameScreen::init()
     cat3->setRunValue(2);
     arrCharacters->addObject(cat3);
 
-    this->schedule(schedule_selector(GameScreen::autoPlay), 0.2);
+    this->drawListItem(CCPoint(size.width / 12, size.height - size.height/10));
+    for (int i = 1; i <= 9; i ++) {
+        this->addItem(i, CCPoint(rand() % 20 + 1, rand() % 20 + 1));
+    } 
     
+    this->schedule(schedule_selector(GameScreen::autoPlay), 0.2);
+    this->schedule(schedule_selector(GameScreen::update));
     return true;
 }
 
@@ -78,7 +86,56 @@ void  GameScreen::initMap(){
     tiledMap->retain();
     this->addChild(tiledMap);
 }
-
+#pragma mark - update
+void GameScreen::update(float dt) {
+    CCObject *i;
+    CCARRAY_FOREACH(_arrItems, i) {
+        Item *item = (Item*)i;
+        int kc1 = item->getContentSize().width/2 * item->getScale() +
+        player->getSprite()->getContentSize().width/2 * player->getSprite()->getScale();
+        int kc2 = ccpDistance(item->getPosition(), player->getSprite()->getPosition());
+        if (kc2 <= kc1) {
+            _arrItemsRemove->addObject(item);
+            switch (item->getType()) {
+                case 1://biến hình
+                    
+                    break;
+                case 2://tàng hình
+                    
+                    break;
+                case 3://tăng tốc
+                    player->setVelocity(player->getVelocity() * 2);
+                    break;
+                case 4://xuyên tường
+                    
+                    break;
+                case 5://đặt bẫy
+                    
+                    break;
+                case 6://SlowSpeed
+                    
+                    break;
+                case 7://đóng băng 
+                    
+                    break;
+                case 8://bóng đèn
+                    
+                    break;
+                case 9://xua đuổi
+                    
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+    
+    CCObject *i1;
+    CCARRAY_FOREACH(_arrItemsRemove, i1) {
+        Item *item = (Item*)i1;
+        this->removeItem(item);
+    }
+}
 #pragma mark - handle touches
 
 void GameScreen::registerWithTouchDispatcher(){
@@ -352,7 +409,40 @@ void GameScreen::autoPlay(){
         }
     }
 }
+#pragma mark - Items
+void GameScreen::addItem(int typeItem, CCPoint position) {
+    Item * item = new Item();
+    item->setType(typeItem);
+    char name[10] = {};
+    sprintf(name, "ball%i.png", typeItem);
+    item->initWithFile(name);
+    item->addToMap(position, this, tiledMap);
+    _arrItems->addObject(item);
+    item->setScale(0.3f);
 
+    CCSprite *spItem = (CCSprite*)this->getChildByTag(1000 + typeItem);
+    spItem->setOpacity(255);
+}
+void GameScreen::drawListItem(cocos2d::CCPoint p) {
+    for (int i = 1; i <= 9; i ++) {
+        char name[10] = {};
+        sprintf(name, "ball%i.png", i);
+        CCSprite *item = CCSprite::create(name);
+        item->setScale(0.5f);
+        float h = item->getScale() * item->getContentSize().width;
+        CCPoint position = CCPoint(p.x + (i - 1 + 0.5f) * h, p.y);
+        item->setPosition(position);
+        item->setTag(1000 + i);
+        item->setOpacity(100);
+        this->addChild(item);
+    }
+}
+void GameScreen::removeItem(Item *item) {
+    CCSprite *spItem = (CCSprite*)this->getChildByTag(1000 + item->getType());
+    spItem->setOpacity(100);
+    _arrItems->removeObject(item);
+    this->removeChild(item, true);
+}
 GameScreen::~GameScreen(){
     delete arrCharacters;
     arrCharacters = NULL;

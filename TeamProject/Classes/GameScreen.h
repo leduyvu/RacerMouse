@@ -17,6 +17,7 @@
 #include "Map/RMMap.h"
 #include "RMTiledMap.h"
 #include "Player.h"
+#include "Item.h"
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>
 class GameScreen : public cocos2d::CCLayer
@@ -27,6 +28,9 @@ private:
     RMTiledMap *tiledMap;
     CCTMXLayer* meta;
     CCArray* arrCharacters;
+    CCArray *_arrItems;
+    CCArray *_arrItemsRemove;
+    CCSize size;
 public:
     // Method 'init' in cocos2d-x returns bool, instead of 'id' in cocos2d-iphone (an object pointer)
     virtual bool init();
@@ -44,6 +48,11 @@ public:
     void ccTouchEnded(CCTouch *touch, CCEvent *event);
     void registerWithTouchDispatcher();
     void autoPlay();
+    void update(float dt);
+    //Items
+    void addItem(int typeItem, CCPoint position);
+    void drawListItem(CCPoint p);
+    void removeItem(Item *item);
 };
 
 #endif /* defined(__TeamProject__GameScreen__) */
