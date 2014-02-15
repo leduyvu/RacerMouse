@@ -59,7 +59,7 @@ public:
     
     /************************** ITEM ***********************/
     //slow after eat item
-    void slowCharacters();
+    void slowCharacters(bool bICE);
     void normalCharacters();
     void itemICE();
     /*********************** end Item ***********************/
@@ -70,6 +70,10 @@ public:
     void addItem(int typeItem, CCPoint position);
     void drawListItem(CCPoint p);
     void removeItem(Item *item);
+    //item 2
+    void increaseVelocityPlayer();
+    void invisibility();
+    void chivy(int type);
  };
 
 #endif /* defined(__TeamProject__GameScreen__) */

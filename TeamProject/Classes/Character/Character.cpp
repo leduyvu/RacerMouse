@@ -132,7 +132,6 @@ void Character::setPosAgian(CCPoint location, CCLayer* layer, RMTiledMap *tiledM
 
 void Character::transformation(int idCharac){
     if(idCharac == 1){
-        
     }
     else if (idCharac == 2){
     

@@ -26,6 +26,8 @@ private:
     CC_SYNTHESIZE(int, runValue, RunValue);
     CC_SYNTHESIZE(int, runCurrent, RunCurrent);
     CC_SYNTHESIZE(int, idCharac, IDCharac);// type of Character
+    
+    CC_SYNTHESIZE(bool, invisibility, Invisibility);
 public:
     Character();
     ~Character();

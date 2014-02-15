@@ -19,4 +19,5 @@
 #define VELOCITY_CAT 0.2
 #define VELOCITY_DOG 0.2
 #define VELOCITY_NORMAL 0.2
+#define VELOCITY_FAST 0.7
 #endif

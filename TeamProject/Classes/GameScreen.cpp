@@ -78,12 +78,12 @@ bool GameScreen::init()
     
     /*****************DU************/
     this->drawListItem(CCPoint(size.width / 12, size.height - size.height/10));
-    for (int i = 1; i <= 9; i ++) {
+    for (int i = 4; i <= 9; i ++) {
         CCPoint p = CCPoint(rand() % 20 + 1, rand() % 20 + 1);
         this->addItem(i, p);
     } 
     
-//    this->schedule(schedule_selector(GameScreen::update), 0.2);
+    this->schedule(schedule_selector(GameScreen::update), 0.2);
     //end DU
     
     return true;
@@ -106,13 +106,17 @@ void GameScreen::update(float dt) {
             _arrItemsRemove->addObject(item);
             switch (item->getType()) {
                 case 1://biến hình
-                    
+                    //OK
+                    meta->removeTileAt(player->getPosition());
+                    player->transformation(4);
                     break;
                 case 2://tàng hình
-                    
+                    //OK
+                    this->invisibility();
                     break;
                 case 3://tăng tốc
-                    player->setVelocity(player->getVelocity() * 2);
+                    //OK
+                    this->increaseVelocityPlayer();
                     break;
                 case 4://xuyên tường
                     
@@ -121,18 +125,23 @@ void GameScreen::update(float dt) {
                     
                     break;
                 case 6://SlowSpeed
-                    
+                    //OK
+                    slowCharacters(false);
+                    timeSlow = 0;
                     break;
-                case 7://đóng băng 
-                    
+                case 7://đóng băng
+                    //OK
+                    this->itemICE();
+                    timeSlow = 0;
                     break;
                 case 8://bóng đèn
                     
                     break;
                 case 9://xua đuổi
-                    
+                    this->chivy(1);
                     break;
                 default:
+       
                     break;
             }
         }
@@ -503,10 +512,12 @@ void GameScreen::eatKey(Character* player){
 //        player->transformation(4);
 //        slowCharacters();
 //    }
-    if (type && type->compare("2") == 0) {
-        meta->removeTileAt(player->getPosition());
-        player->transformation(4);
-        slowCharacters();
-        timeSlow = 0;
-    }
+    
+//    
+//    if (type && type->compare("2") == 0) {
+//        meta->removeTileAt(player->getPosition());
+//        player->transformation(4);
+//        slowCharacters();
+//        timeSlow = 0;
+//    }
 }
