@@ -18,7 +18,7 @@ bool RMTiledMap::init(){
     tileMap = new CCTMXTiledMap();
     tileMap->initWithTMXFile("tileMap.tmx");
     tileMap->retain();
-    meta = tileMap->layerNamed("Meta");
+    meta = tileMap->layerNamed("meta");
     meta->retain();
     this->addChild(tileMap);
     return true;
@@ -54,7 +54,7 @@ CCString* RMTiledMap::typeAtTileCoord(cocos2d::CCPoint tileCoord){
 }
 
 CCPoint RMTiledMap::convertPosMapToPoint(CCPoint posMap){
-    int x = this->getPosition().x + tileMap->getMapSize().width * (posMap.x) + tileMap->getMapSize().width/2;
-    int y = this->getPosition().y + tileMap->getMapSize().width * (29 - posMap.y) - tileMap->getMapSize().width/2;
+    int x = this->getPosition().x + tileMap->getTileSize().width * (posMap.x) + tileMap->getTileSize().width/2;
+    int y = this->getPosition().y + tileMap->getTileSize().width * (19 - posMap.y) - tileMap->getTileSize().width/2;
     return ccp(x, y);
 }

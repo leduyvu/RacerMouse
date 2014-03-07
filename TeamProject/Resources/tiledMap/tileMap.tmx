@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="26" height="29" tilewidth="26" tileheight="26">
- <tileset firstgid="1" name="meta" tilewidth="26" tileheight="26">
-  <image source="meta.png" width="52" height="26"/>
+<map version="1.0" orientation="orthogonal" width="19" height="19" tilewidth="38" tileheight="38">
+ <tileset firstgid="1" name="meta" tilewidth="38" tileheight="38">
+  <image source="meta.png" width="114" height="38"/>
   <tile id="0">
    <properties>
     <property name="type" value="-1"/>
@@ -12,10 +12,15 @@
     <property name="type" value="1"/>
    </properties>
   </tile>
+  <tile id="2">
+   <properties>
+    <property name="type" value="0"/>
+   </properties>
+  </tile>
  </tileset>
- <layer name="Meta" width="26" height="29">
+ <layer name="meta" width="19" height="19">
   <data encoding="base64" compression="zlib">
-   eJzdVYsKwCAItP7/o8egQRy1O11zjwMhDvW0JKuZVYeVZp4YjO1zIIe84oM17ecDZcAhr/ggl9lPlkXq9vhn63jm18vPejnrwSZnNbbHKh0G1FHxFh12x1Ed9j7WfKOYxT7Vz9fnQNFh/46io7xPRGeU8497O0NnxZ2wPKzWK3vOs0NX6WTtU6XeaJ9s3u7SybANEfEDUw==
+   eJytkzsOACEIRNH7H3orG+L8cE0sQBlxfK6qWm1uEaPcyb9Ot48kdvc6vfR1dAdWz85Ffrpa6H6or+SMaf3k/ZVHjMFbXvmgtFxWX1lXLHVPJqwprTP+0Eo9Yv8s4TNheMqqw6/DJdvzAeQvAhM=
   </data>
  </layer>
 </map>

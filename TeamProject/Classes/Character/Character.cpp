@@ -43,13 +43,13 @@ bool Character::checkLeft(RMTiledMap *tiledMap, CCPoint currenPos){
 }
 
 bool Character::checkRight(RMTiledMap *tiledMap, CCPoint currenPos){
-    if(currenPos.x >= 25 && currenPos.y == 13){
+    if(currenPos.x >= WIDTH - 1 && currenPos.y == 13){
         return true;
     }
-    if(currenPos.x >= 25)
+    if(currenPos.x >= WIDTH - 1)
         return false;
     CCString *type = tiledMap->typeAtTileCoord(ccp(currenPos.x + 1 , currenPos.y));
-    if (type && (type->compare("1") == 0 || type->compare("2") == 0) && currenPos.x < 25) {
+    if (type && (type->compare("1") == 0 || type->compare("2") == 0) && currenPos.x < WIDTH - 1) {
         return true;
     }
     else if(type == NULL){
@@ -59,7 +59,7 @@ bool Character::checkRight(RMTiledMap *tiledMap, CCPoint currenPos){
 }
 
 bool Character::checkBelow(RMTiledMap *tiledMap, CCPoint currenPos){
-    if(currenPos.y >= 28)
+    if(currenPos.y >= HEIGHT - 1)
         return false;
     CCString *type = tiledMap->typeAtTileCoord(ccp(currenPos.x, currenPos.y + 1));
     if (type && (type->compare("1") == 0 || type->compare("2") == 0)) {
@@ -86,7 +86,7 @@ bool Character::checkUpward(RMTiledMap *tiledMap, CCPoint currenPos){
 
 void Character::moveLeft(RMTiledMap *tiledMap){
     if(this->getPosition().x == 0 && this->getPosition().y == 13){
-        this->setPosAgian(ccp(25, 13), (CCLayer*)this->getSprite()->getParent() , tiledMap);
+        this->setPosAgian(ccp(WIDTH - 1, 13), (CCLayer*)this->getSprite()->getParent() , tiledMap);
         this->setRunCurrent(2);
     }
     else if(checkLeft(tiledMap, this->position)){
@@ -97,7 +97,7 @@ void Character::moveLeft(RMTiledMap *tiledMap){
 }
 
 void Character::moveRight(RMTiledMap *tiledMap){
-    if(this->getPosition().x == 25 && this->getPosition().y == 13){
+    if(this->getPosition().x == WIDTH - 1 && this->getPosition().y == 13){
         this->setPosAgian(ccp(0, 13), (CCLayer*)this->getSprite()->getParent(), tiledMap);
         this->setRunCurrent(1);
     }

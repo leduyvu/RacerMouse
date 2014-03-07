@@ -8,7 +8,7 @@
 
 #ifndef TeamProject_Definition_h
 #define TeamProject_Definition_h
-#define SIZE_COMPONENT 26
+#define SIZE_COMPONENT 38
 #define MARGIN_WIDTH 46
 #define MARGIN_HEIGHT 40
 #define ID_PLAYER 2
@@ -24,5 +24,8 @@
 #define TIME_ICE 5 //time ice
 #define TIME_TRANSFORM 5
 #define TIME_OPACITY 5
+#define HEIGHT 19
+#define WIDTH 19
+
 #endif
 //item ID 1 = slow, 2 = ice, 3 = change,...

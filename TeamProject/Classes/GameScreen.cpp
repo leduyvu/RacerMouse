@@ -26,14 +26,14 @@ CCScene* GameScreen::scene()
 // on "init" you need to initialize your instance
 bool GameScreen::init()
 {
-    package = new Package();
-    package->createPackage(50, 401, "...");
-    package->setData("sssssss");
-    char addr[200]="192.168.1.154";
-    int port=12345;
-    clientSock = new ClientSocket(addr, port);
-    client = new Client(clientSock);
-    clientSock->connect();
+//    package = new Package();
+//    package->createPackage(50, 401, "...");
+//    package->setData("sssssss");
+//    char addr[200]="192.168.1.154";
+//    int port=12345;
+//    clientSock = new ClientSocket(addr, port);
+//    client = new Client(clientSock);
+//    clientSock->connect();
 
     //test Win
     isSlow = false;
