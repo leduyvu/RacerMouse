@@ -131,33 +131,66 @@ void Character::setPosAgian(CCPoint location, CCLayer* layer, RMTiledMap *tiledM
 }
 
 void Character::transformation(int idCharac){
-    if(idCharac == 1){
+    CCAnimation *animation = CCAnimation::create();
+    for (int i = 1; i <= 6; i++)
+    {
+        std::string str = static_cast<ostringstream*>(&(ostringstream() << i))->str();
+        str = "Animation/Transformation/fx0" + str + ".png";
+        animation->addSpriteFrameWithFileName(str.c_str());
     }
-    else if (idCharac == 2){
-    
-    }
-    else if (idCharac == 3){
-        
-    }
-    else if (idCharac == 4){
-        CCAnimation *animation = CCAnimation::create();
-        for (int i = 1; i <= 6; i++)
-        {
-            std::string str = static_cast<ostringstream*>(&(ostringstream() << i))->str();
-            str = "Animation/Transformation/fx0" + str + ".png";
-            animation->addSpriteFrameWithFileName(str.c_str());
-        }
-        animation->setDelayPerUnit(0.02);
-        animation->setLoops(1);
-        animation->setRestoreOriginalFrame(true);
-        CCAnimate *action = CCAnimate::create(animation);
-        this->getSprite()->runAction(CCSequence::create(action,
-                                                        CCDelayTime::create(0.8),
-                                                        CCCallFuncND::create(this,callfuncND_selector(Character::setSpriteWithIDCharac),(void*)(new int(1))),
-                                                        NULL));
-    }
+    animation->setDelayPerUnit(0.02);
+    animation->setLoops(1);
+    animation->setRestoreOriginalFrame(true);
+    CCAnimate *action = CCAnimate::create(animation);
+    this->getSprite()->runAction(CCSequence::create(action,
+                                                    CCDelayTime::create(0.08),
+                                                    CCCallFuncND::create(this,callfuncND_selector(Character::setSpriteWithIDCharac),(void*)(new int(idCharac))),
+                                                    CCDelayTime::create(TIME_TRANSFORM),
+                                                    CCCallFunc::create(this,callfunc_selector(Character::setDefaultTransform)),
+                                                    NULL));
 }
 
 void Character::setSpriteWithIDCharac(CCNode* sender, void* idCharac){
-    this->spr->setTexture(CCSprite::create("blue.png")->getTexture());
+    int* idCharacter = (int*)idCharac;
+    switch (*idCharacter) {
+        case 1:
+            this->spr->setTexture(CCSprite::create("blue.png")->getTexture());
+            break;
+        case 2:
+            this->spr->setTexture(CCSprite::create("blue.png")->getTexture());
+            break;
+        case 3:
+            this->spr->setTexture(CCSprite::create("Character/boot.png")->getTexture());
+            break;
+        case 4:
+            this->spr->setTexture(CCSprite::create("2.png")->getTexture());
+            break;
+        
+        default:
+            this->spr->setTexture(CCSprite::create("2.png")->getTexture());
+            break;
+    }
+    this->setIDCharac(*idCharacter);
+}
+
+void Character::setDefaultTransform(){
+    CCAnimation *animation = CCAnimation::create();
+    for (int i = 1; i <= 6; i++)
+    {
+        std::string str = static_cast<ostringstream*>(&(ostringstream() << i))->str();
+        str = "Animation/Transformation/fx0" + str + ".png";
+        animation->addSpriteFrameWithFileName(str.c_str());
+    }
+    animation->setDelayPerUnit(0.02);
+    animation->setLoops(1);
+    animation->setRestoreOriginalFrame(true);
+    CCAnimate *action = CCAnimate::create(animation);
+    this->getSprite()->runAction(CCSequence::create(action,
+                                                    CCDelayTime::create(0.08),
+                                                    CCCallFuncND::create(this,callfuncND_selector(Character::setSpriteWithIDCharac),(void*)(new int(defaultID))),
+                                                    NULL));
+}
+
+void Character::setDefaultIDCharac(){
+    this->setIDCharac(defaultID);
 }

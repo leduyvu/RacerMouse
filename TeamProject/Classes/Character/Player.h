@@ -17,5 +17,7 @@ public:
     ~Player();
     void create();
     void autoRun(RMTiledMap* tileMap);
+    void invisibilityItem();
+    void setDefault();
 };
 #endif /* defined(__TeamProject__Player__) */

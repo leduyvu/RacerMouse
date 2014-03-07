@@ -6,22 +6,23 @@
 //
 //
 
-#ifndef TeamProject_Item_h
-#define TeamProject_Item_h
+#ifndef TeamProject_ItemObject_h
+#define TeamProject_ItemObject_h
 
 #include <iostream>
 #include "cocos2d.h"
-#include "Character.h"
 #include "RMTiledMap.h"
+#include "Definition.h"
 using namespace cocos2d;
 using namespace std;
-class Item : public CCSprite
+class ItemObject : public CCObject
 {
 public:
-    Item();
-    ~Item();
-//    void create(int type);
+    ItemObject();
+    ~ItemObject();
+    void create(int type);
     void addToMap(CCPoint location, CCLayer* layer, RMTiledMap* tileMap);
+    void deleteItem(CCLayer* layer);
 private:
     /*
      1 - biến hình
@@ -34,9 +35,9 @@ private:
      8 - bóng đèn
      9 - xua đuổi
      */
-   CC_SYNTHESIZE(int, _type, Type);
-   CC_SYNTHESIZE(CCPoint, _pointMap, PointMap);
-   CC_SYNTHESIZE(string, _nameFile, NameFile);
+    CC_SYNTHESIZE(int, _type, Type);
+    CC_SYNTHESIZE(CCPoint, _pointMap, Location);
+    CC_SYNTHESIZE(CCSprite*, spr, Sprite);
 };
 
 #endif

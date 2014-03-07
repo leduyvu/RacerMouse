@@ -19,6 +19,7 @@
 Dog::Dog(){
     this->setVelocity(VELOCITY_DOG);
     this->setIDCharac(ID_DOG);
+    this->setDefaultID(ID_DOG);
 }
 Dog::~Dog(){
 }

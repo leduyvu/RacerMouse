@@ -26,7 +26,8 @@ private:
     CC_SYNTHESIZE(int, runValue, RunValue);
     CC_SYNTHESIZE(int, runCurrent, RunCurrent);
     CC_SYNTHESIZE(int, idCharac, IDCharac);// type of Character
-    
+    CC_SYNTHESIZE(int, defaultID, DefaultID);// type of Character
+
     CC_SYNTHESIZE(bool, invisibility, Invisibility);
 public:
     Character();
@@ -49,5 +50,7 @@ public:
     //animation
     void transformation(int idCharac);
     void setSpriteWithIDCharac(CCNode* sender, void *data);
+    void setDefaultTransform();
+    void setDefaultIDCharac();
 };
 #endif /* defined(__TeamProject__Character__) */

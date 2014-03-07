@@ -8,7 +8,6 @@
 
 #include "GameScreen.h"
 #include "SimpleAudioEngine.h"
-
 using namespace cocos2d;
 using namespace CocosDenshion;
 
@@ -27,6 +26,15 @@ CCScene* GameScreen::scene()
 // on "init" you need to initialize your instance
 bool GameScreen::init()
 {
+    package = new Package();
+    package->createPackage(50, 401, "...");
+    package->setData("sssssss");
+    char addr[200]="192.168.1.154";
+    int port=12345;
+    clientSock = new ClientSocket(addr, port);
+    client = new Client(clientSock);
+    clientSock->connect();
+
     //test Win
     isSlow = false;
     countKey = 100;
@@ -42,6 +50,7 @@ bool GameScreen::init()
     meta = tiledMap->getMetaLayer();
     registerWithTouchDispatcher();
     
+    arrItems = new CCArray();
     arrPlayers = new CCArray();
     player = new Player();
     player->create();
@@ -49,8 +58,6 @@ bool GameScreen::init()
     player->addToMap(ccp(3, 4), this, tiledMap);
     arrPlayers->addObject(player);
     
-    _arrItems = new CCArray();
-    _arrItemsRemove = new CCArray();
     arrCharacters = new CCArray;
     Character* cat;
     cat = new Cat();
@@ -75,17 +82,18 @@ bool GameScreen::init()
 
     this->schedule(schedule_selector(GameScreen::autoPlay), VELOCITY_PLAYER);
     this->schedule(schedule_selector(GameScreen::autoCharactersPlay), VELOCITY_NORMAL);
-    
-    /*****************DU************/
-    this->drawListItem(CCPoint(size.width / 12, size.height - size.height/10));
-    for (int i = 4; i <= 9; i ++) {
-        CCPoint p = CCPoint(rand() % 20 + 1, rand() % 20 + 1);
-        this->addItem(i, p);
-    } 
-    
-    this->schedule(schedule_selector(GameScreen::update), 0.2);
-    //end DU
-    
+//Item create:
+    for (int i = 1; i <= 9; i ++) {
+        ItemObject* item = new ItemObject();
+        item->create(i);
+        if(i <= 5)
+            item->addToMap(ccp(5, i * 3), this, tiledMap);
+        else
+            item->addToMap(ccp(5, i * 3), this, tiledMap);
+        arrItems->addObject(item);
+    }
+    this->schedule(schedule_selector(GameScreen::autoImpactItem), VELOCITY_PLAYER);
+
     return true;
 }
 
@@ -96,62 +104,6 @@ void  GameScreen::initMap(){
 }
 #pragma mark - update
 void GameScreen::update(float dt) {
-    CCObject *i;
-    CCARRAY_FOREACH(_arrItems, i) {
-        Item *item = (Item*)i;
-        int kc1 = item->getContentSize().width/2 * item->getScale() +
-        player->getSprite()->getContentSize().width/2 * player->getSprite()->getScale();
-        int kc2 = ccpDistance(item->getPosition(), player->getSprite()->getPosition());
-        if (kc2 <= kc1) {
-            _arrItemsRemove->addObject(item);
-            switch (item->getType()) {
-                case 1://biến hình
-                    //OK
-                    meta->removeTileAt(player->getPosition());
-                    player->transformation(4);
-                    break;
-                case 2://tàng hình
-                    //OK
-                    this->invisibility();
-                    break;
-                case 3://tăng tốc
-                    //OK
-                    this->increaseVelocityPlayer();
-                    break;
-                case 4://xuyên tường
-                    
-                    break;
-                case 5://đặt bẫy
-                    
-                    break;
-                case 6://SlowSpeed
-                    //OK
-                    slowCharacters(false);
-                    timeSlow = 0;
-                    break;
-                case 7://đóng băng
-                    //OK
-                    this->itemICE();
-                    timeSlow = 0;
-                    break;
-                case 8://bóng đèn
-                    
-                    break;
-                case 9://xua đuổi
-                    this->chivy(1);
-                    break;
-                default:
-       
-                    break;
-            }
-        }
-    }
-    
-    CCObject *i1;
-    CCARRAY_FOREACH(_arrItemsRemove, i1) {
-        Item *item = (Item*)i1;
-        this->removeItem(item);
-    }
 }
 #pragma mark - handle touches
 
@@ -456,45 +408,14 @@ void GameScreen::autoPlay(){
     }
 }
 #pragma mark - Items
-void GameScreen::addItem(int typeItem, CCPoint position) {
-    Item * item = new Item();
-    item->setType(typeItem);
-    char name[10] = {};
-    sprintf(name, "ball%i.png", typeItem);
-    item->initWithFile(name);
-    item->addToMap(position, this, tiledMap);
-    _arrItems->addObject(item);
-    item->setScale(0.3f);
-
-    CCSprite *spItem = (CCSprite*)this->getChildByTag(1000 + typeItem);
-    spItem->setOpacity(255);
-}
-void GameScreen::drawListItem(cocos2d::CCPoint p) {
-    for (int i = 1; i <= 9; i ++) {
-        char name[10] = {};
-        sprintf(name, "ball%i.png", i);
-        CCSprite *item = CCSprite::create(name);
-        item->setScale(0.5f);
-        float h = item->getScale() * item->getContentSize().width;
-        CCPoint position = CCPoint(p.x + (i - 1 + 0.5f) * h, p.y);
-        item->setPosition(position);
-        item->setTag(1000 + i);
-        item->setOpacity(100);
-        this->addChild(item);
-    }
-}
-void GameScreen::removeItem(Item *item) {
-    CCSprite *spItem = (CCSprite*)this->getChildByTag(1000 + item->getType());
-    spItem->setOpacity(100);
-    _arrItems->removeObject(item);
-    this->removeChild(item, true);
-}
 GameScreen::~GameScreen(){
     delete arrCharacters;
     arrCharacters = NULL;    
     delete arrPlayers;
     arrPlayers = NULL;
     
+    delete arrItems;
+    arrItems = NULL;
     //du
     delete _arrItems;
     _arrItems = NULL;
@@ -520,4 +441,8 @@ void GameScreen::eatKey(Character* player){
 //        slowCharacters();
 //        timeSlow = 0;
 //    }
+}
+
+void GameScreen::autoImpactItem(){
+    impactWithPlayer(arrPlayers, arrItems);
 }

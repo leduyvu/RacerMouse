@@ -17,12 +17,18 @@
 #include "Map/RMMap.h"
 #include "RMTiledMap.h"
 #include "Player.h"
-#include "Item.h"
+#include "Item/ItemObject.h"
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>
+#include "Client.h"
 class GameScreen : public cocos2d::CCLayer
 {
 private:
+    Client* client;
+    Package* package;
+    ClientSocket* clientSock;
+    
+    
     Character* player;
     Character* cat;
     RMTiledMap *tiledMap;
@@ -36,6 +42,9 @@ private:
     int countKey;
     bool isSlow;
     int timeSlow;
+    CCArray* arrItems;
+    //item
+    float iceTime = 0;
 public:
     // Method 'init' in cocos2d-x returns bool, instead of 'id' in cocos2d-iphone (an object pointer)
     virtual bool init();
@@ -56,24 +65,23 @@ public:
     //automation
     void autoCharactersPlay();
     void autoPlay();
-    
+    void autoImpactItem();
     /************************** ITEM ***********************/
     //slow after eat item
     void slowCharacters(bool bICE);
     void normalCharacters();
     void itemICE();
+    void impactWithPlayer(CCArray* arrPlayer, CCArray* arrItems);
+    void increaseVelocityPlayer();
+    void invisibility();
+    void chivy(int type);
+    void iceCount();
+    void transformPlayer(Player* player);
     /*********************** end Item ***********************/
     
     void eatKey(Character* player);
     void update(float dt);
-    //Items
-    void addItem(int typeItem, CCPoint position);
-    void drawListItem(CCPoint p);
-    void removeItem(Item *item);
-    //item 2
-    void increaseVelocityPlayer();
-    void invisibility();
-    void chivy(int type);
+
  };
 
 #endif /* defined(__TeamProject__GameScreen__) */

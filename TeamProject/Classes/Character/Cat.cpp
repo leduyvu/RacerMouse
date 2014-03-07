@@ -10,6 +10,7 @@
 Cat::Cat(){
     this->setVelocity(VELOCITY_CAT);
     this->setIDCharac(ID_CAT);
+    this->setDefaultID(ID_CAT);
 }
 Cat::~Cat(){
 }
