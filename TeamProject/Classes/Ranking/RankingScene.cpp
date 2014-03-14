@@ -12,6 +12,21 @@
 using namespace cocos2d;
 using namespace CocosDenshion;
 
+int rankingWriter(char *data, size_t size, size_t nmemb, string *buffer)
+{
+    int result = 0;
+    
+    if (buffer != NULL)
+    {
+        //バッファ追記
+        buffer->append(data, size * nmemb);
+        result = size * nmemb;
+    }
+    
+    return result;
+}
+
+
 CCScene * RankingScene::scene() {
     CCScene * scene = CCScene::create();
     RankingScene * layer = RankingScene::create();
@@ -23,6 +38,7 @@ bool RankingScene::init() {
     if (!CCLayer::init()) {
         return false;
     }
+    this->getRanking();
     size = CCDirector::sharedDirector()->getWinSize();
     SIZE_RATIO = GameManager::sharedGameManager()->getSIZE_RATIO();
     SIZE_RATIO_X = GameManager::sharedGameManager()->getSIZE_RATIO_X();
@@ -64,6 +80,7 @@ bool RankingScene::init() {
 	this->addChild(tableView);
 	tableView->reloadData();
 
+    
     return true;
 }
 
@@ -104,26 +121,108 @@ CCTableViewCell * RankingScene::tableCellAtIndex(CCTableView *table, unsigned in
     rankLabel->setPosition(ccp(70 * SIZE_RATIO_X, 48 * SIZE_RATIO_Y));
     cell->addChild(rankLabel);
 
-    CCString * strpoint = CCString::createWithFormat("high_score%d", idx + 1);
-    int p = CCUserDefault::sharedUserDefault()->getIntegerForKey(strpoint->getCString());
-    CCString * point = CCString::createWithFormat("%d", p);
-    CCLabelTTF * pointLabel =
-    CCLabelTTF::create(point->getCString(),"Time New Roman",50 * SIZE_RATIO);
-    pointLabel->setPosition(ccp(800 * SIZE_RATIO_X, 48 * SIZE_RATIO_Y));
-    pointLabel->setAnchorPoint(ccp(1, 0.5f));
-    cell->addChild(pointLabel);
+    rapidjson::Document document;
+    string nameLocal = GameManager::sharedGameManager()->getName();
+    // convertName2((char*)nameLocal.c_str());
+    //int pointLocalBest = GameManager::sharedGameManager()->getBestScore();
+    int k = 0;
+    if(dataBuf.c_str() != NULL && !document.Parse<0>(dataBuf.c_str()).HasParseError()) {
+        //for (rapidjson::SizeType  i = 0; i < document.Size(); i++)
+        {
+            string name = document[idx]["name"].GetString();
+            printf("name: %s \n", name.c_str());
+            
+            string mail = document[idx]["email"].GetString();
+            string time = document[idx]["updated_at"].GetString();
+            int p = document[idx]["point"].GetInt();
+            //int r = document[i]["reward"].GetInt();
+            
+            
+            CCString * strpoint = CCString::createWithFormat("high_score%d", idx + 1);
+           // int p = CCUserDefault::sharedUserDefault()->getIntegerForKey(strpoint->getCString());
+            CCString * point = CCString::createWithFormat("%d", p);
+            CCLabelTTF * pointLabel =
+            CCLabelTTF::create(point->getCString(),"Time New Roman",50 * SIZE_RATIO);
+            pointLabel->setPosition(ccp(800 * SIZE_RATIO_X, 48 * SIZE_RATIO_Y));
+            pointLabel->setAnchorPoint(ccp(1, 0.5f));
+            cell->addChild(pointLabel);
+            
+            CCString * strname = CCString::createWithFormat("name%d", idx + 1);
+           // string name = CCUserDefault::sharedUserDefault()->getStringForKey(strname->getCString());
+            CCLabelTTF * nameLabel =
+            CCLabelTTF::create(name.c_str(),"Time New Roman",50 * SIZE_RATIO);
+            nameLabel->setAnchorPoint(ccp(0, 0.5));
+            nameLabel->setPosition(ccp(150 * SIZE_RATIO_X, 48 * SIZE_RATIO_Y));
+            cell->addChild(nameLabel);
+            
+        }
+    } else {
+        CCLog(document.GetParseError());
+    }
     
-    CCString * strname = CCString::createWithFormat("name%d", idx + 1);
-    string name = CCUserDefault::sharedUserDefault()->getStringForKey(strname->getCString());
-    CCLabelTTF * nameLabel =
-    CCLabelTTF::create(name.c_str(),"Time New Roman",50 * SIZE_RATIO);
-    nameLabel->setAnchorPoint(ccp(0, 0.5));
-    nameLabel->setPosition(ccp(150 * SIZE_RATIO_X, 48 * SIZE_RATIO_Y));
-    cell->addChild(nameLabel);
+    
     return cell;
 }
 
 unsigned int RankingScene::numberOfCellsInTableView(CCTableView *table) {
     return 10;
+}
+void RankingScene::getRanking() {
+    CURL *curl;
+    CURLcode res;
+    curl = curl_easy_init();
+    if (curl) {
+        //133.242.203.251
+        //http://Pe4L60aeke:dhWLtJ8F1w@takasuapp.com
+        
+        string ipAddr = GameManager::sharedGameManager()->getIpAddr();
+        string url = ipAddr + ":3000/users.json";
+        curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
+        curl_easy_setopt(curl, CURLOPT_USERNAME, "admin");
+        curl_easy_setopt(curl, CURLOPT_PASSWORD, "1234");
+        curl_easy_setopt(curl, CURLOPT_TIMEOUT, 5);
+        curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
+        curl_easy_setopt(curl, CURLOPT_NOPROGRESS, 1L);
+        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, rankingWriter);
+        curl_easy_setopt(curl, CURLOPT_WRITEDATA, &dataBuf);
+        res = curl_easy_perform(curl);
+        printf("data: %s", dataBuf.c_str());
+        curl_easy_cleanup(curl);
+        if (res == 0) {
+            CCLOG("0 response OK\n");
+        } else {
+            CCLog("code: %i",res);
+            CCLabelTTF *checkInternetMsg = CCLabelTTF::create("現在ランキングは閉じています", "", 30*SIZE_RATIO);
+            //checkInternetMsg->setPosition(ccp(w/2, h/2 - 30*SIZE_RATIO));
+            checkInternetMsg->setColor(ccYELLOW);
+            this->addChild(checkInternetMsg);
+        }
+    } else {
+        CCLOG("no curl\n");
+    }
+    
+}
+void RankingScene::displayRanking() {
+    this->getRanking();
+    rapidjson::Document document;
+    string nameLocal = GameManager::sharedGameManager()->getName();
+   // convertName2((char*)nameLocal.c_str());
+    //int pointLocalBest = GameManager::sharedGameManager()->getBestScore();
+    int k = 0;
+    if(dataBuf.c_str() != NULL && !document.Parse<0>(dataBuf.c_str()).HasParseError()) {
+        for (rapidjson::SizeType  i = 0; i < document.Size(); i++) {
+            string name = document[i]["name"].GetString();
+            printf("name: %s \n", name.c_str());
+            
+            string mail = document[i]["email"].GetString();
+            string time = document[i]["updated_at"].GetString();
+            int p = document[i]["point"].GetInt();
+            int r = document[i]["reward"].GetInt();
+        }
+    } else {
+        CCLog(document.GetParseError());
+    }
+    dataBuf = "";
+   // players->removeAllObjects();
 }
 

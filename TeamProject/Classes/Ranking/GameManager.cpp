@@ -9,7 +9,7 @@ GameManager* GameManager::m_mySingleton = NULL;
 
 GameManager::GameManager()
 {
-    this->setIpAddr("192.168.1.122");
+    this->setIpAddr("192.168.1.104");
     this->setSound(true);
 }
 
@@ -28,27 +28,27 @@ GameManager* GameManager::sharedGameManager()
         GameManager::sharedGameManager()->setSIZE_RATIO_X(SIZE_RATIO_X);
         GameManager::sharedGameManager()->setSIZE_RATIO_Y(SIZE_RATIO_Y);
         
-        CCUserDefault::sharedUserDefault()->setIntegerForKey("high_score1", 11000);
-        CCUserDefault::sharedUserDefault()->setIntegerForKey("high_score2", 10000);
-        CCUserDefault::sharedUserDefault()->setIntegerForKey("high_score3", 9000);
-        CCUserDefault::sharedUserDefault()->setIntegerForKey("high_score4", 8000);
-        CCUserDefault::sharedUserDefault()->setIntegerForKey("high_score5", 7000);
-        CCUserDefault::sharedUserDefault()->setIntegerForKey("high_score6", 6000);
-        CCUserDefault::sharedUserDefault()->setIntegerForKey("high_score7", 5000);
-        CCUserDefault::sharedUserDefault()->setIntegerForKey("high_score8", 4000);
-        CCUserDefault::sharedUserDefault()->setIntegerForKey("high_score9", 3000);
-        CCUserDefault::sharedUserDefault()->setIntegerForKey("high_score10", 2000);
-        
-        CCUserDefault::sharedUserDefault()->setStringForKey("name1", "Teo");
-        CCUserDefault::sharedUserDefault()->setStringForKey("name2", "Ti");
-        CCUserDefault::sharedUserDefault()->setStringForKey("name3", "Tung");
-        CCUserDefault::sharedUserDefault()->setStringForKey("name4", "Cao");
-        CCUserDefault::sharedUserDefault()->setStringForKey("name5", "THang");
-        CCUserDefault::sharedUserDefault()->setStringForKey("name6", "Tien");
-        CCUserDefault::sharedUserDefault()->setStringForKey("name7", "Man");
-        CCUserDefault::sharedUserDefault()->setStringForKey("name8", "Ngung");
-        CCUserDefault::sharedUserDefault()->setStringForKey("name9", "Hung");
-        CCUserDefault::sharedUserDefault()->setStringForKey("name10", "Mien");
+//        CCUserDefault::sharedUserDefault()->setIntegerForKey("high_score1", 11000);
+//        CCUserDefault::sharedUserDefault()->setIntegerForKey("high_score2", 10000);
+//        CCUserDefault::sharedUserDefault()->setIntegerForKey("high_score3", 9000);
+//        CCUserDefault::sharedUserDefault()->setIntegerForKey("high_score4", 8000);
+//        CCUserDefault::sharedUserDefault()->setIntegerForKey("high_score5", 7000);
+//        CCUserDefault::sharedUserDefault()->setIntegerForKey("high_score6", 6000);
+//        CCUserDefault::sharedUserDefault()->setIntegerForKey("high_score7", 5000);
+//        CCUserDefault::sharedUserDefault()->setIntegerForKey("high_score8", 4000);
+//        CCUserDefault::sharedUserDefault()->setIntegerForKey("high_score9", 3000);
+//        CCUserDefault::sharedUserDefault()->setIntegerForKey("high_score10", 2000);
+//        
+//        CCUserDefault::sharedUserDefault()->setStringForKey("name1", "Teo");
+//        CCUserDefault::sharedUserDefault()->setStringForKey("name2", "Ti");
+//        CCUserDefault::sharedUserDefault()->setStringForKey("name3", "Tung");
+//        CCUserDefault::sharedUserDefault()->setStringForKey("name4", "Cao");
+//        CCUserDefault::sharedUserDefault()->setStringForKey("name5", "THang");
+//        CCUserDefault::sharedUserDefault()->setStringForKey("name6", "Tien");
+//        CCUserDefault::sharedUserDefault()->setStringForKey("name7", "Man");
+//        CCUserDefault::sharedUserDefault()->setStringForKey("name8", "Ngung");
+//        CCUserDefault::sharedUserDefault()->setStringForKey("name9", "Hung");
+//        CCUserDefault::sharedUserDefault()->setStringForKey("name10", "Mien");
     }
     
     //Return the singleton object

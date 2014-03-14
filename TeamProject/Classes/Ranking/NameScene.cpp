@@ -23,7 +23,7 @@ bool NameScene::init() {
     SIZE_RATIO_X = GameManager::sharedGameManager()->getSIZE_RATIO_X();
     SIZE_RATIO_Y = GameManager::sharedGameManager()->getSIZE_RATIO_Y();
     
-    CCSprite * bg = CCSprite::create("bg.png");
+    CCSprite * bg = CCSprite::create("HelloWorld.png");
     bg->setScaleX(SIZE_RATIO_X);
     bg->setScaleY(SIZE_RATIO_Y);
     bg->setPosition(ccp(size.width / 2, size.height / 2));
@@ -39,10 +39,10 @@ bool NameScene::init() {
     m_pUserName = CCEditBox::create(editboxSize ,
                                     CCScale9Sprite::create("WhiteBox.png"));
     m_pUserName->setPosition(ccp(size.width / 2, size.height * 4 / 7));
-    m_pUserName->setFontSize(15 * SIZE_RATIO_X);
+    m_pUserName->setFontSize(5 * SIZE_RATIO_X);
     m_pUserName->setFontColor(ccc3(100, 100, 100));
     m_pUserName->setMaxLength(10);
-    m_pUserName->setPlaceHolder("input your name");
+    m_pUserName->setPlaceHolder("input");
     m_pUserName->setReturnType(kKeyboardReturnTypeDefault);
     m_pUserName->setInputMode(kEditBoxInputModeAny);
     m_pUserName->setDelegate(this);
@@ -53,14 +53,14 @@ bool NameScene::init() {
                             menu_selector(NameScene::menuAccept));
     accept->setScaleX(SIZE_RATIO_X);
     accept->setScaleY(SIZE_RATIO_Y);
-    accept->setPosition(ccp(330 * SIZE_RATIO_X, size.height * 2 / 7));
+    accept->setPosition(ccp(280 * SIZE_RATIO_X, size.height * 2 / 7));
     
     CCMenuItemImage * cance =
     CCMenuItemImage::create("btn_cancel.png", "btn_cancel.png", this,
                             menu_selector(NameScene::menuCance));
     cance->setScaleX(SIZE_RATIO_X);
     cance->setScaleY(SIZE_RATIO_Y);
-    cance->setPosition(ccp(800 * SIZE_RATIO_X, size.height * 2 / 7));
+    cance->setPosition(ccp(700 * SIZE_RATIO_X, size.height * 2 / 7));
     CCMenu * menu = CCMenu::create(accept, cance, NULL);
     menu->setPosition(ccp(0, 0));
     this->addChild(menu);
