@@ -23,6 +23,7 @@ void Character::create(){
 void Character::addToMap(CCPoint location, CCLayer* layer, RMTiledMap *tiledMap){
     this->position  = location;
     this->spr->setPosition(tiledMap->convertPosMapToPoint(location));
+    spr->setScale(0.5);
     layer->addChild(spr);
 }
 
@@ -154,20 +155,20 @@ void Character::setSpriteWithIDCharac(CCNode* sender, void* idCharac){
     int* idCharacter = (int*)idCharac;
     switch (*idCharacter) {
         case 1:
-            this->spr->setTexture(CCSprite::create("blue.png")->getTexture());
+            this->spr->setTexture(CCSprite::create("Character/mouse.png")->getTexture());
             break;
         case 2:
-            this->spr->setTexture(CCSprite::create("blue.png")->getTexture());
+            this->spr->setTexture(CCSprite::create("Character/mouse.png")->getTexture());
             break;
         case 3:
-            this->spr->setTexture(CCSprite::create("Character/boot.png")->getTexture());
+            this->spr->setTexture(CCSprite::create("Character/cat.png")->getTexture());
             break;
         case 4:
-            this->spr->setTexture(CCSprite::create("2.png")->getTexture());
+            this->spr->setTexture(CCSprite::create("Character/cat.png")->getTexture());
             break;
         
         default:
-            this->spr->setTexture(CCSprite::create("2.png")->getTexture());
+            this->spr->setTexture(CCSprite::create("Character/mouse.png")->getTexture());
             break;
     }
     this->setIDCharac(*idCharacter);
@@ -190,7 +191,6 @@ void Character::setDefaultTransform(){
                                                     CCCallFuncND::create(this,callfuncND_selector(Character::setSpriteWithIDCharac),(void*)(new int(defaultID))),
                                                     NULL));
 }
-
 void Character::setDefaultIDCharac(){
     this->setIDCharac(defaultID);
 }

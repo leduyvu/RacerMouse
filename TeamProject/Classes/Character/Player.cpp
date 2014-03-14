@@ -15,7 +15,7 @@ Player::Player(){
 Player::~Player(){
 }
 void Player::create(){
-    this->spr = CCSprite::create("blue.png");
+    this->spr = CCSprite::create("Character/mouse.png");
 }
 
 void Player::autoRun(RMTiledMap *tileMap){

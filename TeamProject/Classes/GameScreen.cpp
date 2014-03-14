@@ -26,16 +26,6 @@ CCScene* GameScreen::scene()
 // on "init" you need to initialize your instance
 bool GameScreen::init()
 {
-//    package = new Package();
-//    package->createPackage(50, 401, "...");
-//    package->setData("sssssss");
-//    char addr[200]="192.168.1.154";
-//    int port=12345;
-//    clientSock = new ClientSocket(addr, port);
-//    client = new Client(clientSock);
-//    clientSock->connect();
-
-    //test Win
     isSlow = false;
     countKey = 100;
     srand (time(NULL));
@@ -140,7 +130,6 @@ void GameScreen::ccTouchEnded(cocos2d::CCTouch *touch, cocos2d::CCEvent *event){
     CCPoint touchLocation = touch->getLocationInView();
     touchLocation = CCDirector::sharedDirector()->convertToGL(touchLocation);
     touchLocation = this->convertToNodeSpace(touchLocation);
-    
 //    CCPoint tileCoord = tiledMap->tileCoordForPosition(touchLocation);
 }
 

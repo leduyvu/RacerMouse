@@ -15,7 +15,7 @@ Cat::Cat(){
 Cat::~Cat(){
 }
 void Cat::create(){
-    this->spr = CCSprite::create("Character/boot.png");
+    this->spr = CCSprite::create("Character/cat.png");
 }
 
 void Cat::autoRun(RMTiledMap* tileMap){

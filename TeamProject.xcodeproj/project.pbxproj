@@ -276,11 +276,13 @@
 		CE67CE3C1877FDDF00E22A81 /* cpSweep1D.c in Sources */ = {isa = PBXBuildFile; fileRef = CE67CE3B1877FDDF00E22A81 /* cpSweep1D.c */; };
 		CE67CE3E1877FDDF00E22A81 /* cpVect.c in Sources */ = {isa = PBXBuildFile; fileRef = CE67CE3D1877FDDF00E22A81 /* cpVect.c */; };
 		CE67CE451877FDDF00E22A81 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE67CE441877FDDF00E22A81 /* AppDelegate.cpp */; };
-		CE89451918C9A67D00B7B37A /* Client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE89451018C9A67D00B7B37A /* Client.cpp */; };
-		CE89451A18C9A67D00B7B37A /* clientmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE89451218C9A67D00B7B37A /* clientmain.cpp */; };
-		CE89451B18C9A67D00B7B37A /* ClientSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE89451318C9A67D00B7B37A /* ClientSocket.cpp */; };
-		CE89451C18C9A67D00B7B37A /* Package.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE89451518C9A67D00B7B37A /* Package.cpp */; };
-		CE89451D18C9A67D00B7B37A /* Socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE89451718C9A67D00B7B37A /* Socket.cpp */; };
+		CE8F1E0B18CD60970053C888 /* ClientSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE8F1E0418CD60970053C888 /* ClientSocket.cpp */; };
+		CE8F1E0C18CD60970053C888 /* Package.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE8F1E0618CD60970053C888 /* Package.cpp */; };
+		CE8F1E0D18CD60970053C888 /* Socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE8F1E0818CD60970053C888 /* Socket.cpp */; };
+		CE8F1E1418CD677D0053C888 /* GameRoom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE8F1E1218CD677D0053C888 /* GameRoom.cpp */; };
+		CE8F1E1618CD6AC90053C888 /* RoomScene in Resources */ = {isa = PBXBuildFile; fileRef = CE8F1E1518CD6AC90053C888 /* RoomScene */; };
+		CE8F1E2018CD725F0053C888 /* Client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE8F1E1E18CD725F0053C888 /* Client.cpp */; };
+		CEB8AD6D18CF0085000DE16C /* WaittingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEB8AD6B18CF0084000DE16C /* WaittingScene.cpp */; };
 		DC6BB4A318935D540056BD5F /* ball1.png in Resources */ = {isa = PBXBuildFile; fileRef = DC6BB49A18935D540056BD5F /* ball1.png */; };
 		DC6BB4A418935D540056BD5F /* ball2.png in Resources */ = {isa = PBXBuildFile; fileRef = DC6BB49B18935D540056BD5F /* ball2.png */; };
 		DC6BB4A518935D540056BD5F /* ball3.png in Resources */ = {isa = PBXBuildFile; fileRef = DC6BB49C18935D540056BD5F /* ball3.png */; };
@@ -303,9 +305,6 @@
 		DEECE9F4188CE14A00C1AF51 /* RMTiledMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DEECE9F2188CE14A00C1AF51 /* RMTiledMap.cpp */; };
 		DEECE9F7188CEDAF00C1AF51 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = DEECE9F5188CEDAF00C1AF51 /* 2.png */; };
 		DEECE9F8188CEDAF00C1AF51 /* 26x26.png in Resources */ = {isa = PBXBuildFile; fileRef = DEECE9F6188CEDAF00C1AF51 /* 26x26.png */; };
-		DEECE9FB188CEFB300C1AF51 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = DEECE9F9188CEFB300C1AF51 /* 2.png */; };
-		DEECE9FC188CEFB300C1AF51 /* 26x26.png in Resources */ = {isa = PBXBuildFile; fileRef = DEECE9FA188CEFB300C1AF51 /* 26x26.png */; };
-		DEECEA02188D144900C1AF51 /* meta.png in Resources */ = {isa = PBXBuildFile; fileRef = DEECEA01188D144900C1AF51 /* meta.png */; };
 		DEF204211893735F00EA6089 /* Meta2.png in Resources */ = {isa = PBXBuildFile; fileRef = DEF204201893735F00EA6089 /* Meta2.png */; };
 /* End PBXBuildFile section */
 
@@ -890,15 +889,19 @@
 		CE67CE411877FDDF00E22A81 /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		CE67CE431877FDDF00E22A81 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = "<group>"; };
 		CE67CE441877FDDF00E22A81 /* AppDelegate.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AppDelegate.cpp; path = Classes/AppDelegate.cpp; sourceTree = "<group>"; };
-		CE89451018C9A67D00B7B37A /* Client.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Client.cpp; sourceTree = "<group>"; };
-		CE89451118C9A67D00B7B37A /* Client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Client.h; sourceTree = "<group>"; };
-		CE89451218C9A67D00B7B37A /* clientmain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = clientmain.cpp; sourceTree = "<group>"; };
-		CE89451318C9A67D00B7B37A /* ClientSocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ClientSocket.cpp; sourceTree = "<group>"; };
-		CE89451418C9A67D00B7B37A /* ClientSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientSocket.h; sourceTree = "<group>"; };
-		CE89451518C9A67D00B7B37A /* Package.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Package.cpp; sourceTree = "<group>"; };
-		CE89451618C9A67D00B7B37A /* Package.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Package.h; sourceTree = "<group>"; };
-		CE89451718C9A67D00B7B37A /* Socket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Socket.cpp; sourceTree = "<group>"; };
-		CE89451818C9A67D00B7B37A /* Socket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Socket.h; sourceTree = "<group>"; };
+		CE8F1E0418CD60970053C888 /* ClientSocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ClientSocket.cpp; sourceTree = "<group>"; };
+		CE8F1E0518CD60970053C888 /* ClientSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientSocket.h; sourceTree = "<group>"; };
+		CE8F1E0618CD60970053C888 /* Package.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Package.cpp; sourceTree = "<group>"; };
+		CE8F1E0718CD60970053C888 /* Package.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Package.h; sourceTree = "<group>"; };
+		CE8F1E0818CD60970053C888 /* Socket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Socket.cpp; sourceTree = "<group>"; };
+		CE8F1E0918CD60970053C888 /* Socket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Socket.h; sourceTree = "<group>"; };
+		CE8F1E1218CD677D0053C888 /* GameRoom.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameRoom.cpp; sourceTree = "<group>"; };
+		CE8F1E1318CD677D0053C888 /* GameRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameRoom.h; sourceTree = "<group>"; };
+		CE8F1E1518CD6AC90053C888 /* RoomScene */ = {isa = PBXFileReference; lastKnownFileType = folder; name = RoomScene; path = Resources/RoomScene; sourceTree = "<group>"; };
+		CE8F1E1E18CD725F0053C888 /* Client.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Client.cpp; sourceTree = "<group>"; };
+		CE8F1E1F18CD725F0053C888 /* Client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Client.h; sourceTree = "<group>"; };
+		CEB8AD6B18CF0084000DE16C /* WaittingScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WaittingScene.cpp; sourceTree = "<group>"; };
+		CEB8AD6C18CF0085000DE16C /* WaittingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaittingScene.h; sourceTree = "<group>"; };
 		DC6BB49A18935D540056BD5F /* ball1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ball1.png; sourceTree = "<group>"; };
 		DC6BB49B18935D540056BD5F /* ball2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ball2.png; sourceTree = "<group>"; };
 		DC6BB49C18935D540056BD5F /* ball3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ball3.png; sourceTree = "<group>"; };
@@ -926,9 +929,6 @@
 		DEECE9F3188CE14A00C1AF51 /* RMTiledMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMTiledMap.h; sourceTree = "<group>"; };
 		DEECE9F5188CEDAF00C1AF51 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 2.png; path = Resources/2.png; sourceTree = "<group>"; };
 		DEECE9F6188CEDAF00C1AF51 /* 26x26.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 26x26.png; path = Resources/26x26.png; sourceTree = "<group>"; };
-		DEECE9F9188CEFB300C1AF51 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
-		DEECE9FA188CEFB300C1AF51 /* 26x26.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 26x26.png; sourceTree = "<group>"; };
-		DEECEA01188D144900C1AF51 /* meta.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meta.png; sourceTree = "<group>"; };
 		DEF204201893735F00EA6089 /* Meta2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Meta2.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1026,6 +1026,7 @@
 		CE67CAE11877FDC700E22A81 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CE8F1E1518CD6AC90053C888 /* RoomScene */,
 				CE0E97771893AC3800A75EAB /* Animation */,
 				DC6BB49918935D540056BD5F /* Item */,
 				CE65A6DD18925D0C004F84A5 /* Character */,
@@ -2109,7 +2110,9 @@
 		CE67CE421877FDDF00E22A81 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				CE89450F18C9A67D00B7B37A /* ClientSocket */,
+				CE8F1E1D18CD725E0053C888 /* Client */,
+				CE8F1E1118CD677D0053C888 /* Room */,
+				CE8F1E0118CD60970053C888 /* Socket */,
 				CE0E977B1893C49000A75EAB /* Item */,
 				CE0181D5187A811000840F8B /* Character */,
 				DED36177187E786F0031D9DE /* Map */,
@@ -2125,21 +2128,40 @@
 			name = Classes;
 			sourceTree = "<group>";
 		};
-		CE89450F18C9A67D00B7B37A /* ClientSocket */ = {
+		CE8F1E0118CD60970053C888 /* Socket */ = {
 			isa = PBXGroup;
 			children = (
-				CE89451018C9A67D00B7B37A /* Client.cpp */,
-				CE89451118C9A67D00B7B37A /* Client.h */,
-				CE89451218C9A67D00B7B37A /* clientmain.cpp */,
-				CE89451318C9A67D00B7B37A /* ClientSocket.cpp */,
-				CE89451418C9A67D00B7B37A /* ClientSocket.h */,
-				CE89451518C9A67D00B7B37A /* Package.cpp */,
-				CE89451618C9A67D00B7B37A /* Package.h */,
-				CE89451718C9A67D00B7B37A /* Socket.cpp */,
-				CE89451818C9A67D00B7B37A /* Socket.h */,
+				CE8F1E0418CD60970053C888 /* ClientSocket.cpp */,
+				CE8F1E0518CD60970053C888 /* ClientSocket.h */,
+				CE8F1E0618CD60970053C888 /* Package.cpp */,
+				CE8F1E0718CD60970053C888 /* Package.h */,
+				CE8F1E0818CD60970053C888 /* Socket.cpp */,
+				CE8F1E0918CD60970053C888 /* Socket.h */,
 			);
-			name = ClientSocket;
-			path = Classes/ClientSocket;
+			name = Socket;
+			path = Classes/Socket;
+			sourceTree = "<group>";
+		};
+		CE8F1E1118CD677D0053C888 /* Room */ = {
+			isa = PBXGroup;
+			children = (
+				CE8F1E1218CD677D0053C888 /* GameRoom.cpp */,
+				CE8F1E1318CD677D0053C888 /* GameRoom.h */,
+				CEB8AD6B18CF0084000DE16C /* WaittingScene.cpp */,
+				CEB8AD6C18CF0085000DE16C /* WaittingScene.h */,
+			);
+			name = Room;
+			path = Classes/Room;
+			sourceTree = "<group>";
+		};
+		CE8F1E1D18CD725E0053C888 /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				CE8F1E1E18CD725F0053C888 /* Client.cpp */,
+				CE8F1E1F18CD725F0053C888 /* Client.h */,
+			);
+			name = Client;
+			path = Classes/Client;
 			sourceTree = "<group>";
 		};
 		DC6BB49918935D540056BD5F /* Item */ = {
@@ -2180,7 +2202,6 @@
 			isa = PBXGroup;
 			children = (
 				DEF204201893735F00EA6089 /* Meta2.png */,
-
 				DE3A383D18C9B9E2008CE305 /* bg_maps.png */,
 				DE3A383E18C9B9E2008CE305 /* box.png */,
 				DE3A383F18C9B9E2008CE305 /* chesse.png */,
@@ -2276,6 +2297,7 @@
 				DC6BB4A918935D540056BD5F /* ball7.png in Resources */,
 				DC6BB4AA18935D540056BD5F /* ball8.png in Resources */,
 				DC6BB4AB18935D540056BD5F /* ball9.png in Resources */,
+				CE8F1E1618CD6AC90053C888 /* RoomScene in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2533,11 +2555,12 @@
 				CE0181E8187A956300840F8B /* GameMenu.cpp in Sources */,
 				CE0E977E1893C61100A75EAB /* ItemObject.cpp in Sources */,
 				CE0E97811893C91300A75EAB /* HandlerItem.cpp in Sources */,
-				CE89451918C9A67D00B7B37A /* Client.cpp in Sources */,
-				CE89451A18C9A67D00B7B37A /* clientmain.cpp in Sources */,
-				CE89451B18C9A67D00B7B37A /* ClientSocket.cpp in Sources */,
-				CE89451C18C9A67D00B7B37A /* Package.cpp in Sources */,
-				CE89451D18C9A67D00B7B37A /* Socket.cpp in Sources */,
+				CE8F1E0B18CD60970053C888 /* ClientSocket.cpp in Sources */,
+				CE8F1E0C18CD60970053C888 /* Package.cpp in Sources */,
+				CE8F1E0D18CD60970053C888 /* Socket.cpp in Sources */,
+				CE8F1E1418CD677D0053C888 /* GameRoom.cpp in Sources */,
+				CE8F1E2018CD725F0053C888 /* Client.cpp in Sources */,
+				CEB8AD6D18CF0085000DE16C /* WaittingScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2569,7 +2592,7 @@
 					"\"$(PROJECT_NAME)/libs/cocos2dx/platform/third_party/ios\"",
 					"\"$(PROJECT_NAME)/libs/cocos2dx/platform/ios\"",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2598,7 +2621,7 @@
 					"\"$(PROJECT_NAME)/libs/cocos2dx/platform/third_party/ios\"",
 					"\"$(PROJECT_NAME)/libs/cocos2dx/platform/ios\"",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2615,7 +2638,7 @@
 				GCC_PREFIX_HEADER = TeamProject/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = TeamProject/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/TeamProject/libs/cocos2dx/platform/third_party/ios/libraries\"",
@@ -2641,7 +2664,7 @@
 				GCC_PREFIX_HEADER = TeamProject/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = TeamProject/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/TeamProject/libs/cocos2dx/platform/third_party/ios/libraries\"",

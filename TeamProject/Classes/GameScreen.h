@@ -28,7 +28,6 @@ private:
     Package* package;
     ClientSocket* clientSock;
     
-    
     Character* player;
     Character* cat;
     RMTiledMap *tiledMap;
