@@ -26,6 +26,16 @@ CCScene* GameScreen::scene()
 // on "init" you need to initialize your instance
 bool GameScreen::init()
 {
+//    package = new Package();
+//    package->createPackage(50, 401, "...");
+//    package->setData("sssssss");
+//    char addr[200]="192.168.1.154";
+//    int port=12345;
+//    clientSock = new ClientSocket(addr, port);
+//    client = new Client(clientSock);
+//    clientSock->connect();
+    
+    //test Win
     isSlow = false;
     countKey = 100;
     srand (time(NULL));
@@ -70,6 +80,8 @@ bool GameScreen::init()
     cat3->setRunValue(2);
     arrCharacters->addObject(cat3);
 
+    intKey();
+    
     this->schedule(schedule_selector(GameScreen::autoPlay), VELOCITY_PLAYER);
     this->schedule(schedule_selector(GameScreen::autoCharactersPlay), VELOCITY_NORMAL);
 //Item create:
@@ -77,19 +89,110 @@ bool GameScreen::init()
         ItemObject* item = new ItemObject();
         item->create(i);
         if(i <= 5)
-            item->addToMap(ccp(5, i * 3), this, tiledMap);
-        else
-            item->addToMap(ccp(5, i * 3), this, tiledMap);
+            item->addToMap(ccp(4, i * 3), this, tiledMap);
+        else{
+        }
+//            item->addToMap(ccp(4, i * 3), this, tiledMap);
         arrItems->addObject(item);
     }
     this->schedule(schedule_selector(GameScreen::autoImpactItem), VELOCITY_PLAYER);
+    CCMenuItemImage * pause =
+    CCMenuItemImage::create("menu.png", "menu.png", this,
+                            menu_selector(GameScreen::onMenu));
+    pause->setPosition(ccp(size.width / 9, size.height * 9.5 / 11));
+    pause->setRotation(90);
+    
+    CCMenu * menu = CCMenu::create(pause, NULL);
+    menu->setPosition(CCPointZero);
+    this->addChild(menu);
 
+    _pauseLayer = CCSprite::create("frame-dialog.png");
+    _pauseLayer->setAnchorPoint(ccp(0.5, 0.5));
+    _pauseLayer->setPosition(ccp(size.width / 2, size.height / 3));
+    _pauseLayer->setRotation(90);
+    this->addChild(_pauseLayer, 1);
+    CCMenuItemImage * continueItem =
+    CCMenuItemImage::create("btn_continues.png","btn_continues_active.png", this,
+                            menu_selector(GameScreen::onContinue));
+    continueItem->
+    setPosition(_pauseLayer->convertToNodeSpace(ccp(size.width * 3.5 / 5,
+                                                    size.height * 1.7 / 5)));
+    continueItem->setScale(0.8);
+    CCMenuItemImage * restartItem =
+    CCMenuItemImage::create("btn_continues.png", "btn_continues_active.png", this,
+                            menu_selector(GameScreen::onRestart));
+    restartItem->
+    setPosition(_pauseLayer->convertToNodeSpace(ccp(size.width * 2.5 / 5,
+                                                    size.height * 1.7 / 5)));
+    restartItem->setScale(0.8);
+    CCMenuItemImage * quitItem =
+    CCMenuItemImage::create("btn_backmain.png", "btn_backmain_active.png", this,
+                            menu_selector(GameScreen::onQuit));
+    quitItem->
+    setPosition(_pauseLayer->convertToNodeSpace(ccp(size.width * 1.5 / 5,
+                                                    size.height * 1.7 / 5)));
+    quitItem->setScale(0.8);
+    CCMenu * pauseMenu = CCMenu::create(continueItem, restartItem, quitItem, NULL);
+    pauseMenu->setPosition(ccp(0, 0));
+    _pauseLayer->addChild(pauseMenu);
+    _pauseLayer->setVisible(false);
+    
+    CCSprite * score = CCSprite::create("score.png");
+    score->setRotation(90);
+    score->setPosition(ccp(size.width * 8.5 / 9, size.height * 9.5 / 11));
+    this->addChild(score);
+    
+    CCSprite * ice = CCSprite::create("btn_ice.png");
+    ice->setRotation(90);
+    ice->setPosition(ccp(size.width * 6.7 / 9, size.height * 10 / 11));
+    this->addChild(ice);
+    
+    _ice = CCSprite::create("btn_ice_active.png");
+    _ice->setPosition(ice->getPosition());
+    _ice->setRotation(90);
+    _ice->setVisible(false);
+    this->addChild(_ice);
+    
+    
+    CCSprite * invi = CCSprite::create("btn_invi.png");
+    invi->setRotation(90);
+    invi->setPosition(ccp(size.width * 6.7 / 9, size.height * 9 / 11));
+    this->addChild(invi);
+    
+    _invi = CCSprite::create("btn_invi_active.png");
+    _invi->setRotation(90);
+    _invi->setPosition(invi->getPosition());
+    _invi->setVisible(false);
+    this->addChild(_invi);
+    
+    CCSprite * speed = CCSprite::create("btn_speed.png");
+    speed->setRotation(90);
+    speed->setPosition(ccp(size.width * 5.3 / 9, size.height * 10 / 11));
+    this->addChild(speed);
+    
+    _speed = CCSprite::create("btn_speed_active.png");
+    _speed->setRotation(90);
+    _speed->setPosition(speed->getPosition());
+    _speed->setVisible(false);
+    this->addChild(_speed);
+    
+    CCSprite * streng = CCSprite::create("btn_streng.png");
+    streng->setRotation(90);
+    streng->setPosition(ccp(size.width * 5.3 / 9, size.height * 9 / 11));
+    this->addChild(streng);
+    
+    _streng = CCSprite::create("btn_streng_active.png");
+    _streng->setPosition(streng->getPosition());
+    _streng->setRotation(90);
+    _streng->setVisible(false);
+    this->addChild(_streng);
     return true;
 }
 
 void  GameScreen::initMap(){
     tiledMap = RMTiledMap::create();
     tiledMap->retain();
+    tiledMap->setPosition(ccp((size.width -  tiledMap->getTiledMap()->getMapSize().width * tiledMap->getTiledMap()->getTileSize().width)/2,size.height - tiledMap->getTiledMap()->getMapSize().height * tiledMap->getTiledMap()->getTileSize().height));
     this->addChild(tiledMap);
 }
 #pragma mark - update
@@ -105,6 +208,9 @@ bool GameScreen::ccTouchBegan(cocos2d::CCTouch *touch, cocos2d::CCEvent *event){
     CCPoint touchLocation = touch->getLocationInView();
     touchLocation = CCDirector::sharedDirector()->convertToGL(touchLocation);
     touchLocation = this->convertToNodeSpace(touchLocation);
+    if(touchLocation.y <= size.height - tiledMap->getTiledMap()->getMapSize().height * tiledMap->getTiledMap()->getTileSize().height){
+        return true;
+    }
     Character* player = dynamic_cast<Character*>(arrPlayers->objectAtIndex(0));
     if(fabs(touchLocation.x - player->getSprite()->getPosition().x) > fabs(touchLocation.y - player->getSprite()->getPosition().y)){
         if(touchLocation.x - player->getSprite()->getPosition().x > 0){
@@ -131,6 +237,13 @@ void GameScreen::ccTouchEnded(cocos2d::CCTouch *touch, cocos2d::CCEvent *event){
     touchLocation = CCDirector::sharedDirector()->convertToGL(touchLocation);
     touchLocation = this->convertToNodeSpace(touchLocation);
 //    CCPoint tileCoord = tiledMap->tileCoordForPosition(touchLocation);
+}
+
+void GameScreen::ccTouchMoved(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent){
+//    CCPoint touchLocation = pTouch->getLocationInView();
+//    touchLocation = CCDirector::sharedDirector()->convertToGL(touchLocation);
+//    touchLocation = this->convertToNodeSpace(touchLocation);
+//    CCRect* touchRect = CCRect(touchLocation.x, <#float y#>, <#float width#>, <#float height#>)
 }
 
 void GameScreen::autoCharactersPlay(){
@@ -434,4 +547,65 @@ void GameScreen::eatKey(Character* player){
 
 void GameScreen::autoImpactItem(){
     impactWithPlayer(arrPlayers, arrItems);
+}
+
+void GameScreen::onMenu(CCObject *pSender) {
+    CCDirector::sharedDirector()->pause();
+    _pauseLayer->setVisible(true);
+}
+
+void GameScreen::onContinue(CCObject *pSender) {
+    _pauseLayer->setVisible(false);
+    CCDirector::sharedDirector()->resume();
+}
+
+void GameScreen::onRestart(CCObject *pSender) {
+    CCDirector::sharedDirector()->resume();
+    CCScene * scene = GameScreen::scene();
+    CCDirector::sharedDirector()->replaceScene(scene);
+}
+
+void GameScreen::onQuit(CCObject *pSender) {
+    CCDirector::sharedDirector()->resume();
+    CCScene * scene = GameMenu::scene();
+    CCDirector::sharedDirector()->replaceScene(scene);
+}
+
+void GameScreen::intKey(){
+    CCMenuItemImage* itemRight = CCMenuItemImage::create("Key/right.png", "Key/right.png", this,
+                            menu_selector(GameScreen::moveKey));
+    CCMenuItemImage* itemLeft = CCMenuItemImage::create("Key/left.png", "Key/left.png", this,
+                                                         menu_selector(GameScreen::moveKey));
+    CCMenuItemImage* itemUp = CCMenuItemImage::create("Key/up.png", "Key/up.png", this,
+                                                         menu_selector(GameScreen::moveKey));
+    CCMenuItemImage* itemDown = CCMenuItemImage::create("Key/down.png", "Key/down.png", this,
+                                                         menu_selector(GameScreen::moveKey));
+    itemRight->setPosition(ccp(size.width * 13 /16 + itemRight->getContentSize().width , size.height* 1/8));
+    itemLeft->setPosition(ccp(size.width * 13 /16 - itemLeft->getContentSize().width , size.height* 1/8));
+    itemUp->setPosition(ccp(size.width * 13 /16, size.height* 1/8 + itemRight->getContentSize().width ));
+    itemDown->setPosition(ccp(size.width * 13 /16, size.height* 1/8 - itemRight->getContentSize().width ));
+    itemRight->setTag(2001);
+    itemLeft->setTag(2002);
+    itemUp->setTag(2003);
+    itemDown->setTag(2004);
+
+    CCMenu * menu = CCMenu::create(itemDown, itemUp, itemRight, itemLeft, NULL);
+    menu->setPosition(CCPointZero);
+    this->addChild(menu);
+}
+
+void GameScreen::moveKey(CCNode* sender, void* data){
+    if(sender->getTag() == 2001){
+        player->setRunValue(1);
+    }
+    else if(sender->getTag() == 2002){
+        player->setRunValue(2);
+    }
+    else if(sender->getTag() == 2003){
+        player->setRunValue(3);
+    }
+    else if(sender->getTag() == 2004){
+        player->setRunValue(4);
+    }
+    
 }

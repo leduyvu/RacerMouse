@@ -21,6 +21,7 @@
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>
 #include "Client.h"
+#include "GameMenu.h"
 class GameScreen : public cocos2d::CCLayer
 {
 private:
@@ -33,16 +34,20 @@ private:
     RMTiledMap *tiledMap;
     CCTMXLayer* meta;
     CCArray* arrCharacters;
-    
     CCArray *_arrItems;
     CCArray *_arrItemsRemove;
-    CCSize size;
     CCArray* arrPlayers;
+    CCArray* arrItems;
+    CCSize size;
+    CCSprite *_pauseLayer;
+    CCSprite *_ice;
+    CCSprite *_invi;
+    CCSprite *_speed;
+    CCSprite *_streng;
+
     int countKey;
     bool isSlow;
     int timeSlow;
-    CCArray* arrItems;
-    //item
     float iceTime = 0;
 public:
     // Method 'init' in cocos2d-x returns bool, instead of 'id' in cocos2d-iphone (an object pointer)
@@ -55,9 +60,13 @@ public:
     void menuCloseCallback(CCObject* pSender);
     //map
     void initMap();
+    //keybrouch
+    void intKey();
+    void moveKey(CCNode* sender, void* data);
     // preprocessor macro for "static create()" constructor ( node() deprecated )
     CREATE_FUNC(GameScreen);
     bool ccTouchBegan(CCTouch *touch, CCEvent *event);
+    void ccTouchMoved(CCTouch *touch, CCEvent *event);
     void ccTouchEnded(CCTouch *touch, CCEvent *event);
     void registerWithTouchDispatcher();
     
@@ -80,7 +89,10 @@ public:
     
     void eatKey(Character* player);
     void update(float dt);
-
+    void onMenu(CCObject * pSender);
+    void onContinue(CCObject * pSender);
+    void onRestart(CCObject * pSender);
+    void onQuit(CCObject * pSender);
  };
 
 #endif /* defined(__TeamProject__GameScreen__) */

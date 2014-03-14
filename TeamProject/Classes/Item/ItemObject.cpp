@@ -14,19 +14,19 @@ ItemObject::~ItemObject(){
 void ItemObject::create(int type){
     switch (type) {
         case 1:
-            this->spr = CCSprite::create("ball1.png");
+            this->spr = CCSprite::create("Item/streng.png");
             break;
         case 2:
-            this->spr = CCSprite::create("ball2.png");
+            this->spr = CCSprite::create("Item/ice.png");
             break;
         case 3:
-            this->spr = CCSprite::create("ball3.png");
+            this->spr = CCSprite::create("Item/streng.png");
             break;
         case 4:
-            this->spr = CCSprite::create("ball4.png");
+            this->spr = CCSprite::create("Item/invi.png");
             break;
         case 5:
-            this->spr = CCSprite::create("ball5.png");
+            this->spr = CCSprite::create("Item/speed.png");
             break;
         case 6:
             this->spr = CCSprite::create("ball6.png");
@@ -44,12 +44,16 @@ void ItemObject::create(int type){
             break;
     }
     this->setType(type);
-    this->spr->setScale(0.2);
+//    this->spr->setScale(0.2);
 }
 void ItemObject::addToMap(CCPoint location, CCLayer* layer, RMTiledMap *tiledMap){
     this->setLocation(location);
     this->spr->setPosition(tiledMap->convertPosMapToPoint(location));
     layer->addChild(spr, ZORDER_ITEM);
+    CCString *type = tiledMap->typeAtTileCoord(ccp(location.x, location.y));
+    if (type && type->compare("1") == 0) {
+        tiledMap->getMetaLayer()->removeTileAt(location);
+    }
 }
 
 void ItemObject::deleteItem(CCLayer* layer){
