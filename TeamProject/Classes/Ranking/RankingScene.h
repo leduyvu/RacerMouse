@@ -20,6 +20,8 @@
 #include "curl/curl.h"
 #include "rapidjson.h"
 #include "document.h"
+#include "GameMenu.h"
+
 using namespace cocos2d;
 using namespace cocos2d::extension;
 

@@ -85,11 +85,8 @@ bool RankingScene::init() {
 }
 
 void RankingScene::menuQuit(CCObject *pSender) {
-    if (GameManager::sharedGameManager()->getSound()) {
-        //SimpleAudioEngine::sharedEngine()->playEffect("button.wav");
-    }
-    //CCScene * scene = BeginScene::scene();
-    //CCDirector::sharedDirector()->replaceScene(scene);
+    CCScene * scene = GameMenu::scene();
+    CCDirector::sharedDirector()->replaceScene(scene);
 }
 
 void RankingScene::menuPlay(CCObject *pSender) {

@@ -13,6 +13,8 @@
 #include "GameScreen.h"
 #include "RankingScene.h"
 #include "NameScene.h"
+#include "GameMenu.h"
+
 USING_NS_CC;
 using namespace CocosDenshion;
 
@@ -38,9 +40,13 @@ bool AppDelegate::applicationDidFinishLaunching()
     pDirector->setAnimationInterval(1.0 / 60);
 
     // create a scene. it's an autorelease object
+
 //    CCScene *pScene = GameScreen::scene();
-    CCScene *pScene = RankingScene::scene();
+//    CCScene *pScene = RankingScene::scene();
     //CCScene *pScene = NameScene::scene();
+
+    CCScene *pScene = GameMenu::scene();
+
     // run
     pDirector->runWithScene(pScene);
 
