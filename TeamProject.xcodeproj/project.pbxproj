@@ -304,6 +304,7 @@
 		DCCF8FDD18D2B191007A5148 /* tutorial.png in Resources */ = {isa = PBXBuildFile; fileRef = DCCF8FD418D2B191007A5148 /* tutorial.png */; };
 		DCCF8FE018D2B335007A5148 /* play_active.png in Resources */ = {isa = PBXBuildFile; fileRef = DCCF8FDE18D2B335007A5148 /* play_active.png */; };
 		DCCF8FE118D2B335007A5148 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = DCCF8FDF18D2B335007A5148 /* play.png */; };
+		DCCF8FE318D2BBC3007A5148 /* WhiteBox.png in Resources */ = {isa = PBXBuildFile; fileRef = DCCF8FE218D2BBC3007A5148 /* WhiteBox.png */; };
 		DE27427F1889104000522D09 /* CCJSONConverter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DE27427A1889104000522D09 /* CCJSONConverter.cpp */; };
 		DE2742801889104000522D09 /* cJSON.c in Sources */ = {isa = PBXBuildFile; fileRef = DE27427D1889104000522D09 /* cJSON.c */; };
 		DE3A384218C9B9E2008CE305 /* bg_maps.png in Resources */ = {isa = PBXBuildFile; fileRef = DE3A383D18C9B9E2008CE305 /* bg_maps.png */; };
@@ -936,6 +937,7 @@
 		DCCF8FD418D2B191007A5148 /* tutorial.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial.png; sourceTree = "<group>"; };
 		DCCF8FDE18D2B335007A5148 /* play_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play_active.png; sourceTree = "<group>"; };
 		DCCF8FDF18D2B335007A5148 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
+		DCCF8FE218D2BBC3007A5148 /* WhiteBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WhiteBox.png; sourceTree = "<group>"; };
 		DE27427A1889104000522D09 /* CCJSONConverter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCJSONConverter.cpp; sourceTree = "<group>"; };
 		DE27427B1889104000522D09 /* CCJSONConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCJSONConverter.h; sourceTree = "<group>"; };
 		DE27427C1889104000522D09 /* CCJSONData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCJSONData.h; sourceTree = "<group>"; };
@@ -2203,6 +2205,7 @@
 		DCCF8FCB18D2B191007A5148 /* Ranking */ = {
 			isa = PBXGroup;
 			children = (
+				DCCF8FE218D2BBC3007A5148 /* WhiteBox.png */,
 				DCCF8FDE18D2B335007A5148 /* play_active.png */,
 				DCCF8FDF18D2B335007A5148 /* play.png */,
 				DCCF8FCC18D2B191007A5148 /* btn_accept.png */,
@@ -2346,6 +2349,7 @@
 				DCCF8FDD18D2B191007A5148 /* tutorial.png in Resources */,
 				DCCF8FE018D2B335007A5148 /* play_active.png in Resources */,
 				DCCF8FE118D2B335007A5148 /* play.png in Resources */,
+				DCCF8FE318D2BBC3007A5148 /* WhiteBox.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

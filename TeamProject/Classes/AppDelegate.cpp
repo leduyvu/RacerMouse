@@ -12,6 +12,7 @@
 #include "SimpleAudioEngine.h"
 #include "GameScreen.h"
 #include "RankingScene.h"
+#include "NameScene.h"
 USING_NS_CC;
 using namespace CocosDenshion;
 
@@ -39,7 +40,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     // create a scene. it's an autorelease object
 //    CCScene *pScene = GameScreen::scene();
     CCScene *pScene = RankingScene::scene();
-
+    //CCScene *pScene = NameScene::scene();
     // run
     pDirector->runWithScene(pScene);
 
