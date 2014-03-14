@@ -938,6 +938,16 @@
 		DCCF8FDE18D2B335007A5148 /* play_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play_active.png; sourceTree = "<group>"; };
 		DCCF8FDF18D2B335007A5148 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
 		DCCF8FE218D2BBC3007A5148 /* WhiteBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WhiteBox.png; sourceTree = "<group>"; };
+		DCCF8FF818D2F88D007A5148 /* document.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = document.h; sourceTree = "<group>"; };
+		DCCF8FF918D2F88D007A5148 /* filestream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = filestream.h; sourceTree = "<group>"; };
+		DCCF8FFB18D2F88D007A5148 /* pow10.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pow10.h; sourceTree = "<group>"; };
+		DCCF8FFC18D2F88D007A5148 /* stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stack.h; sourceTree = "<group>"; };
+		DCCF8FFD18D2F88D007A5148 /* strfunc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = strfunc.h; sourceTree = "<group>"; };
+		DCCF8FFE18D2F88D007A5148 /* prettywriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = prettywriter.h; sourceTree = "<group>"; };
+		DCCF8FFF18D2F88D007A5148 /* rapidjson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rapidjson.h; sourceTree = "<group>"; };
+		DCCF900018D2F88D007A5148 /* reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = reader.h; sourceTree = "<group>"; };
+		DCCF900118D2F88D007A5148 /* stringbuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stringbuffer.h; sourceTree = "<group>"; };
+		DCCF900218D2F88D007A5148 /* writer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = writer.h; sourceTree = "<group>"; };
 		DE27427A1889104000522D09 /* CCJSONConverter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCJSONConverter.cpp; sourceTree = "<group>"; };
 		DE27427B1889104000522D09 /* CCJSONConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCJSONConverter.h; sourceTree = "<group>"; };
 		DE27427C1889104000522D09 /* CCJSONData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCJSONData.h; sourceTree = "<group>"; };
@@ -2137,6 +2147,7 @@
 		CE67CE421877FDDF00E22A81 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				DCCF8FF718D2F88D007A5148 /* rapidjson */,
 				DCCF8FC118D2B17F007A5148 /* Ranking */,
 				CE89450F18C9A67D00B7B37A /* ClientSocket */,
 				CE0E977B1893C49000A75EAB /* Item */,
@@ -2220,6 +2231,32 @@
 			);
 			name = Ranking;
 			path = Resources/Ranking;
+			sourceTree = "<group>";
+		};
+		DCCF8FF718D2F88D007A5148 /* rapidjson */ = {
+			isa = PBXGroup;
+			children = (
+				DCCF8FF818D2F88D007A5148 /* document.h */,
+				DCCF8FF918D2F88D007A5148 /* filestream.h */,
+				DCCF8FFA18D2F88D007A5148 /* internal */,
+				DCCF8FFE18D2F88D007A5148 /* prettywriter.h */,
+				DCCF8FFF18D2F88D007A5148 /* rapidjson.h */,
+				DCCF900018D2F88D007A5148 /* reader.h */,
+				DCCF900118D2F88D007A5148 /* stringbuffer.h */,
+				DCCF900218D2F88D007A5148 /* writer.h */,
+			);
+			name = rapidjson;
+			path = Classes/rapidjson;
+			sourceTree = "<group>";
+		};
+		DCCF8FFA18D2F88D007A5148 /* internal */ = {
+			isa = PBXGroup;
+			children = (
+				DCCF8FFB18D2F88D007A5148 /* pow10.h */,
+				DCCF8FFC18D2F88D007A5148 /* stack.h */,
+				DCCF8FFD18D2F88D007A5148 /* strfunc.h */,
+			);
+			path = internal;
 			sourceTree = "<group>";
 		};
 		DED36177187E786F0031D9DE /* Map */ = {

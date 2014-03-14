@@ -17,6 +17,9 @@
 #include "CCTableView.h"
 #include "CCTableViewCell.h"
 #include "CCScrollView.h"
+#include "curl/curl.h"
+#include "rapidjson.h"
+#include "document.h"
 using namespace cocos2d;
 using namespace cocos2d::extension;
 
@@ -25,6 +28,7 @@ private:
     CCSize size;
     int celltouch;
     float SIZE_RATIO, SIZE_RATIO_X, SIZE_RATIO_Y;
+    string dataBuf;
 public:
     virtual bool init();
     static CCScene * scene();
@@ -37,6 +41,9 @@ public:
     virtual CCTableViewCell* tableCellAtIndex(CCTableView *table, unsigned int idx);
     virtual unsigned int numberOfCellsInTableView(CCTableView *table);
     CREATE_FUNC(RankingScene);
+    
+    void getRanking();
+    void displayRanking();
 };
 
 #endif /* defined(__BallJumpping__RankingScene__) */
