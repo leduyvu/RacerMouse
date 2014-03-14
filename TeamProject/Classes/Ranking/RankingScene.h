@@ -17,6 +17,7 @@
 #include "CCTableView.h"
 #include "CCTableViewCell.h"
 #include "CCScrollView.h"
+#include "GameMenu.h"
 using namespace cocos2d;
 using namespace cocos2d::extension;
 
