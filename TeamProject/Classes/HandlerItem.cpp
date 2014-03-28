@@ -53,6 +53,20 @@ void GameScreen::impactWithPlayer(CCArray* arrPlayer, CCArray* arrItems){
                 item->deleteItem(this);
             }
         }
+        
+        //impact character
+        CCObject* objCharac;
+        CCARRAY_FOREACH(arrCharacters, objCharac){
+            Character* charac = dynamic_cast<Character*>(objCharac);
+            if((int)charac->getPosition().x ==  (int)player->getPosition().x && (int)charac->getPosition().y == (int)player->getPosition().y){
+                //die
+                this->unscheduleUpdate();
+                this->unschedule(schedule_selector(GameScreen::autoPlay));
+                this->unschedule(schedule_selector(GameScreen::autoCharactersPlay));
+                showGameOver();
+            }
+        }
+        
     }
 }
 

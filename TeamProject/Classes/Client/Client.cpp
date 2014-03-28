@@ -13,16 +13,19 @@ bool Client::login(){
 }
 
 bool Client::connectRoom(int roomID){
+    package = new Package();
     package->createPackage(1, MESSAGE_CODE_CONNECTROOM, NULL);
     package->setRoomID(roomID);
     this->clientSocket->send(*package);
+    puts("...waiting message..");
     //waiting reply from server
     clientSocket->recv(*package);
     if(package->getMessageCode() == (int)MESSAGE_CODE_FAIL){
         printf("Not connect to room because room full or network disconnect!\n");
         return false;
     }
-    else if(package->getMessageCode() == (int)MESSAGE_CODE_CLIENT_ST || package->getMessageCode()== (int)MESSAGE_CODE_CLIENT_ND){
+    else if(package->getMessageCode() == (int)MESSAGE_CODE_CLIENT_ST || package->getMessageCode()== (int)
+        MESSAGE_CODE_CLIENT_ND){
         printf("Connect successful!\n");
         if(package->getMessageCode() == (int)MESSAGE_CODE_CLIENT_ST){
             this->clientID = 1;

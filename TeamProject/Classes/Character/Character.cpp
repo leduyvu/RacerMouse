@@ -24,11 +24,11 @@ void Character::addToMap(CCPoint location, CCLayer* layer, RMTiledMap *tiledMap)
     this->position  = location;
     this->spr->setPosition(tiledMap->convertPosMapToPoint(location));
     spr->setScale(0.5);
-    layer->addChild(spr);
+    layer->addChild(spr, ZORDER_CHARACTER);
 }
 
 bool Character::checkLeft(RMTiledMap *tiledMap, CCPoint currenPos){
-    if(currenPos.x == 0 && currenPos.y == 13){
+    if(currenPos.x == 0 && currenPos.y == 9){
         return true;
     }
     if(currenPos.x <= 0)
@@ -44,7 +44,7 @@ bool Character::checkLeft(RMTiledMap *tiledMap, CCPoint currenPos){
 }
 
 bool Character::checkRight(RMTiledMap *tiledMap, CCPoint currenPos){
-    if(currenPos.x >= WIDTH - 1 && currenPos.y == 13){
+    if(currenPos.x >= WIDTH - 1 && currenPos.y == 9){
         return true;
     }
     if(currenPos.x >= WIDTH - 1)
@@ -60,6 +60,9 @@ bool Character::checkRight(RMTiledMap *tiledMap, CCPoint currenPos){
 }
 
 bool Character::checkBelow(RMTiledMap *tiledMap, CCPoint currenPos){
+    if((currenPos.x == 5 && currenPos.y == 18) || (currenPos.x == 14 && currenPos.y == 18)){
+        return true;
+    }
     if(currenPos.y >= HEIGHT - 1)
         return false;
     CCString *type = tiledMap->typeAtTileCoord(ccp(currenPos.x, currenPos.y + 1));
@@ -73,6 +76,9 @@ bool Character::checkBelow(RMTiledMap *tiledMap, CCPoint currenPos){
 }
 
 bool Character::checkUpward(RMTiledMap *tiledMap, CCPoint currenPos){
+    if((currenPos.x == 5 && currenPos.y == 0) || (currenPos.x == 14 && currenPos.y == 0)){
+        return true;
+    }
     if(currenPos.y <= 0)
         return false;
     CCString *type = tiledMap->typeAtTileCoord(ccp(currenPos.x, currenPos.y - 1));
@@ -86,8 +92,8 @@ bool Character::checkUpward(RMTiledMap *tiledMap, CCPoint currenPos){
 }
 
 void Character::moveLeft(RMTiledMap *tiledMap){
-    if(this->getPosition().x == 0 && this->getPosition().y == 13){
-        this->setPosAgian(ccp(WIDTH - 1, 13), (CCLayer*)this->getSprite()->getParent() , tiledMap);
+    if(this->getPosition().x == 0 && this->getPosition().y == 9){
+        this->setPosAgian(ccp(WIDTH - 1, 9), (CCLayer*)this->getSprite()->getParent() , tiledMap);
         this->setRunCurrent(2);
     }
     else if(checkLeft(tiledMap, this->position)){
@@ -98,8 +104,8 @@ void Character::moveLeft(RMTiledMap *tiledMap){
 }
 
 void Character::moveRight(RMTiledMap *tiledMap){
-    if(this->getPosition().x == WIDTH - 1 && this->getPosition().y == 13){
-        this->setPosAgian(ccp(0, 13), (CCLayer*)this->getSprite()->getParent(), tiledMap);
+    if(this->getPosition().x == WIDTH - 1 && this->getPosition().y == 9){
+        this->setPosAgian(ccp(0, 9), (CCLayer*)this->getSprite()->getParent(), tiledMap);
         this->setRunCurrent(1);
     }
     else
@@ -111,6 +117,9 @@ void Character::moveRight(RMTiledMap *tiledMap){
 }
 
 void Character::moveBelow(RMTiledMap *tiledMap){
+    if((this->getPosition().x == 5 && this->getPosition().y == 18) || (this->getPosition().x == 14 && this->getPosition().y == 18)){
+        this->setPosAgian(ccp(this->getPosition().x, 0), (CCLayer*)this->getSprite()->getParent() , tiledMap);
+    }
     if(checkBelow(tiledMap, this->position)){
         this->spr->runAction(CCMoveBy::create(this->getVelocity(), ccp(0, tiledMap->getTiledMap()->getTileSize().width * (-1))));
         this->position = ccp(this->position.x, this->position.y + 1);
@@ -119,6 +128,9 @@ void Character::moveBelow(RMTiledMap *tiledMap){
 }
 
 void Character::moveUpward(RMTiledMap *tiledMap){
+    if((this->getPosition().x == 5 && this->getPosition().y == 0) || (this->getPosition().x == 14 && this->getPosition().y == 0)){
+        this->setPosAgian(ccp(this->getPosition().x, 18), (CCLayer*)this->getSprite()->getParent() , tiledMap);
+    }
     if(checkUpward(tiledMap, this->position)){
         this->spr->runAction(CCMoveBy::create(this->getVelocity(), ccp(0, tiledMap->getTiledMap()->getTileSize().width)));
         this->position = ccp(this->position.x, this->position.y - 1);
@@ -129,6 +141,10 @@ void Character::moveUpward(RMTiledMap *tiledMap){
 void Character::setPosAgian(CCPoint location, CCLayer* layer, RMTiledMap *tiledMap){
     this->position  = location;
     this->spr->setPosition(tiledMap->convertPosMapToPoint(location));
+//    CCString *type = tiledMap->typeAtTileCoord(ccp(location.x, location.y));
+//    if (type && type->compare("1") == 0) {
+//        tiledMap->getMetaLayer()->removeTileAt(location);
+//    }
 }
 
 void Character::transformation(int idCharac){

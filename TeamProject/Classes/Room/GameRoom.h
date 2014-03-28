@@ -20,11 +20,14 @@ USING_NS_CC;
 class GameRoom : public cocos2d::CCLayer
 {
 public:
-//    bool touchExist;
-    virtual bool init();
-    static cocos2d::CCScene* scene();
-    CREATE_FUNC(GameRoom);
+    GameRoom();
     ~GameRoom();
+//    bool touchExist;
+    virtual bool init(Client* client);
+    static cocos2d::CCScene* scene(Client* client);
+    static GameRoom* create(Client* client);
+//    CREATE_FUNC(GameRoom);
+
 //    void initMapsData();
 //    void menuNewGameCallback();
 //    void listMap(CCNode* sender);

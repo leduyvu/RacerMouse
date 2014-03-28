@@ -79,7 +79,6 @@ bool GameScreen::init()
     cat3->addToMap(ccp(9, 4), this, tiledMap);
     cat3->setRunValue(2);
     arrCharacters->addObject(cat3);
-
     intKey();
     
     this->schedule(schedule_selector(GameScreen::autoPlay), VELOCITY_PLAYER);
@@ -88,7 +87,7 @@ bool GameScreen::init()
     for (int i = 1; i <= 9; i ++) {
         ItemObject* item = new ItemObject();
         item->create(i);
-        if(i <= 5)
+        if(i <= 5 && i > 0)
             item->addToMap(ccp(4, i * 3), this, tiledMap);
         else{
         }
@@ -96,96 +95,7 @@ bool GameScreen::init()
         arrItems->addObject(item);
     }
     this->schedule(schedule_selector(GameScreen::autoImpactItem), VELOCITY_PLAYER);
-    CCMenuItemImage * pause =
-    CCMenuItemImage::create("menu.png", "menu.png", this,
-                            menu_selector(GameScreen::onMenu));
-    pause->setPosition(ccp(size.width / 9, size.height * 9.5 / 11));
-    pause->setRotation(90);
-    
-    CCMenu * menu = CCMenu::create(pause, NULL);
-    menu->setPosition(CCPointZero);
-    this->addChild(menu);
-
-    _pauseLayer = CCSprite::create("frame-dialog.png");
-    _pauseLayer->setAnchorPoint(ccp(0.5, 0.5));
-    _pauseLayer->setPosition(ccp(size.width / 2, size.height / 3));
-    _pauseLayer->setRotation(90);
-    this->addChild(_pauseLayer, 1);
-    CCMenuItemImage * continueItem =
-    CCMenuItemImage::create("btn_continues.png","btn_continues_active.png", this,
-                            menu_selector(GameScreen::onContinue));
-    continueItem->
-    setPosition(_pauseLayer->convertToNodeSpace(ccp(size.width * 3.5 / 5,
-                                                    size.height * 1.7 / 5)));
-    continueItem->setScale(0.8);
-    CCMenuItemImage * restartItem =
-    CCMenuItemImage::create("btn_continues.png", "btn_continues_active.png", this,
-                            menu_selector(GameScreen::onRestart));
-    restartItem->
-    setPosition(_pauseLayer->convertToNodeSpace(ccp(size.width * 2.5 / 5,
-                                                    size.height * 1.7 / 5)));
-    restartItem->setScale(0.8);
-    CCMenuItemImage * quitItem =
-    CCMenuItemImage::create("btn_backmain.png", "btn_backmain_active.png", this,
-                            menu_selector(GameScreen::onQuit));
-    quitItem->
-    setPosition(_pauseLayer->convertToNodeSpace(ccp(size.width * 1.5 / 5,
-                                                    size.height * 1.7 / 5)));
-    quitItem->setScale(0.8);
-    CCMenu * pauseMenu = CCMenu::create(continueItem, restartItem, quitItem, NULL);
-    pauseMenu->setPosition(ccp(0, 0));
-    _pauseLayer->addChild(pauseMenu);
-    _pauseLayer->setVisible(false);
-    
-    CCSprite * score = CCSprite::create("score.png");
-    score->setRotation(90);
-    score->setPosition(ccp(size.width * 8.5 / 9, size.height * 9.5 / 11));
-    this->addChild(score);
-    
-    CCSprite * ice = CCSprite::create("btn_ice.png");
-    ice->setRotation(90);
-    ice->setPosition(ccp(size.width * 6.7 / 9, size.height * 10 / 11));
-    this->addChild(ice);
-    
-    _ice = CCSprite::create("btn_ice_active.png");
-    _ice->setPosition(ice->getPosition());
-    _ice->setRotation(90);
-    _ice->setVisible(false);
-    this->addChild(_ice);
-    
-    
-    CCSprite * invi = CCSprite::create("btn_invi.png");
-    invi->setRotation(90);
-    invi->setPosition(ccp(size.width * 6.7 / 9, size.height * 9 / 11));
-    this->addChild(invi);
-    
-    _invi = CCSprite::create("btn_invi_active.png");
-    _invi->setRotation(90);
-    _invi->setPosition(invi->getPosition());
-    _invi->setVisible(false);
-    this->addChild(_invi);
-    
-    CCSprite * speed = CCSprite::create("btn_speed.png");
-    speed->setRotation(90);
-    speed->setPosition(ccp(size.width * 5.3 / 9, size.height * 10 / 11));
-    this->addChild(speed);
-    
-    _speed = CCSprite::create("btn_speed_active.png");
-    _speed->setRotation(90);
-    _speed->setPosition(speed->getPosition());
-    _speed->setVisible(false);
-    this->addChild(_speed);
-    
-    CCSprite * streng = CCSprite::create("btn_streng.png");
-    streng->setRotation(90);
-    streng->setPosition(ccp(size.width * 5.3 / 9, size.height * 9 / 11));
-    this->addChild(streng);
-    
-    _streng = CCSprite::create("btn_streng_active.png");
-    _streng->setPosition(streng->getPosition());
-    _streng->setRotation(90);
-    _streng->setVisible(false);
-    this->addChild(_streng);
+    initItemView();
     return true;
 }
 
@@ -523,6 +433,11 @@ GameScreen::~GameScreen(){
     _arrItems = NULL;
     delete _arrItemsRemove;
     _arrItemsRemove = NULL;
+    
+    delete arrIsItems;
+    arrIsItems = NULL;
+    delete arrPosItems;
+    arrPosItems = NULL;
 }
 
 void GameScreen::eatKey(Character* player){
@@ -530,7 +445,12 @@ void GameScreen::eatKey(Character* player){
     if (type && type->compare("1") == 0) {
         meta->removeTileAt(player->getPosition());
         countKey--;
+        iScore += 2;
+        std::string strScore = static_cast<ostringstream*>(&(ostringstream() << this->iScore))->str();
+        lbScore->setString(strScore.c_str());
     }
+    
+    
 //    if(countKey == 90){
 //        player->transformation(4);
 //        slowCharacters();
@@ -607,5 +527,154 @@ void GameScreen::moveKey(CCNode* sender, void* data){
     else if(sender->getTag() == 2004){
         player->setRunValue(4);
     }
+}
+
+void GameScreen::initItemView(){
+    CCSprite * score = CCSprite::create("score.png");
+    //    score->setRotation(90);
+    score->setPosition(ccp(score->getContentSize().width/2 +  size.width/32 , size.height - SIZE_COMPONENT * HEIGHT - score->getContentSize().height/2 - ALIGN));
+    this->addChild(score);
+    std::string strScore = static_cast<ostringstream*>(&(ostringstream() << this->iScore))->str();
+
+    lbScore = CCLabelTTF::create(strScore.c_str(), "Time New Roman", 35);
+    lbScore->setColor(ccc3(225, 125, 255));
+    lbScore->setPosition(ccp(score->getContentSize().width * 3/4, score->getContentSize().height *4/9));
+    score->addChild(lbScore);
     
+    CCMenuItemImage * pause =
+    CCMenuItemImage::create("menu.png", "menu.png", this,
+                            menu_selector(GameScreen::onMenu));
+    pause->setPosition(ccp(score->getPosition().x + score->getContentSize().width /2 + pause->getContentSize().width/2 + ALIGN * 2, score->getPosition().y));
+    pause->setScale(score->getContentSize().height / pause->getContentSize().height);
+//    pause->setRotation(90);
+    
+    CCMenu * menu = CCMenu::create(pause, NULL);
+    menu->setPosition(CCPointZero);
+    this->addChild(menu);
+    
+    _pauseLayer = CCSprite::create("frame-dialog.png");
+//    _pauseLayer->setAnchorPoint(ccp(0.5, 0.5));
+    _pauseLayer->setPosition(ccp(size.width /2 , size.height * 7/ 12));
+    this->addChild(_pauseLayer, ZORDER_CHARACTER + 1);
+    CCMenuItemImage * continueItem =
+    CCMenuItemImage::create("btn_continues.png","btn_continues_active.png", this,
+                            menu_selector(GameScreen::onContinue));
+    continueItem->
+    setPosition(ccp(_pauseLayer->getContentSize().width/2, _pauseLayer->getContentSize().height * 3/4));
+    continueItem->setScale(0.8);
+    CCMenuItemImage * restartItem =
+    CCMenuItemImage::create("btn_continues.png", "btn_continues_active.png", this,
+                            menu_selector(GameScreen::onRestart));
+    restartItem->
+    setPosition(ccp(continueItem->getPosition().x, _pauseLayer->getContentSize().height/2));
+    restartItem->setScale(0.8);
+    CCMenuItemImage * quitItem =
+    CCMenuItemImage::create("btn_backmain.png", "btn_backmain_active.png", this,
+                            menu_selector(GameScreen::onQuit));
+    quitItem->
+    setPosition(ccp(continueItem->getPosition().x, _pauseLayer->getContentSize().height * 1/4));
+    quitItem->setScale(0.8);
+    CCMenu * pauseMenu = CCMenu::create(continueItem, restartItem, quitItem, NULL);
+    pauseMenu->setPosition(ccp(0, 0));
+    _pauseLayer->addChild(pauseMenu);
+    _pauseLayer->setVisible(false);
+    
+    CCSprite * ice = CCSprite::create("btn_ice.png");
+//    ice->setRotation(90);
+    ice->setPosition(ccp(score->getPosition().x - score->getContentSize().width/2 + ice->getContentSize().width/2, score->getPosition().y - score->getContentSize().height/2 - ALIGN * 2 - ice->getContentSize().height/2));
+    this->addChild(ice);
+    
+    _ice = CCSprite::create("btn_ice_active.png");
+    _ice->setPosition(ice->getPosition());
+//    _ice->setRotation(90);
+    _ice->setVisible(false);
+    this->addChild(_ice);
+    
+    
+    CCSprite * invi = CCSprite::create("btn_invi.png");
+//    invi->setRotation(90);
+    invi->setPosition(ccp(ice->getPosition().x, ice->getPosition().y -  ice->getContentSize().height - ALIGN));
+    this->addChild(invi);
+    
+    _invi = CCSprite::create("btn_invi_active.png");
+//    _invi->setRotation(90);
+    _invi->setPosition(invi->getPosition());
+    _invi->setVisible(false);
+    this->addChild(_invi);
+    
+    CCSprite * speed = CCSprite::create("btn_speed.png");
+//    speed->setRotation(90);
+    speed->setPosition(ccp(ice->getPosition().x + ALIGN + ice->getContentSize().width, ice->getPosition().y));
+    this->addChild(speed);
+    
+    _speed = CCSprite::create("btn_speed_active.png");
+//    _speed->setRotation(90);
+    _speed->setPosition(speed->getPosition());
+    _speed->setVisible(false);
+    this->addChild(_speed);
+    
+    CCSprite * streng = CCSprite::create("btn_streng.png");
+//    streng->setRotation(90);
+    streng->setPosition(ccp(speed->getPosition().x, invi->getPosition().y));
+    this->addChild(streng);
+    
+    _streng = CCSprite::create("btn_streng_active.png");
+    _streng->setPosition(streng->getPosition());
+//    _streng->setRotation(90);
+    _streng->setVisible(false);
+    this->addChild(_streng);
+    
+    
+    CCSprite * item5 = CCSprite::create("btn_normal.png");
+    item5->setPosition(ccp(streng->getPosition().x + item5->getContentSize().width + ALIGN , ice->getPosition().y));
+    this->addChild(item5);
+    
+    CCSprite * item6 = CCSprite::create("btn_normal.png");
+    item6->setPosition(ccp(item5->getPosition().x, invi->getPosition().y));
+    this->addChild(item6);
+    CCSprite * item7 = CCSprite::create("btn_normal.png");
+    item7->setPosition(ccp(item5->getPosition().x + ice->getContentSize().width + ALIGN , ice->getPosition().y));
+    this->addChild(item7);
+    CCSprite * item8 = CCSprite::create("btn_normal.png");
+    item8->setPosition(ccp(item7->getPosition().x, invi->getPosition().y));
+    this->addChild(item8);
+}
+
+void GameScreen::autoCreateItem(){
+    
+    
+}
+
+void GameScreen::showGameOver(){
+    CCSprite* sprGameOver = CCSprite::create("frame-dialog.png");
+    sprGameOver->setPosition(ccp(size.width/2, size.height * 7/12));
+    sprGameOver->setTag(GAMEOVER_TAG);
+    this->addChild(sprGameOver, ZORDER_CHARACTER + 1);
+    CCMenuItemImage * continueItem =
+    CCMenuItemImage::create("btn_continues.png","btn_continues_active.png", this,
+                            menu_selector(GameScreen::onContinue));
+    continueItem->
+    setPosition(ccp(_pauseLayer->getContentSize().width/2, _pauseLayer->getContentSize().height * 3/4));
+    continueItem->setScale(0.8);
+    CCMenuItemImage * restartItem =
+    CCMenuItemImage::create("btn_continues.png", "btn_continues_active.png", this,
+                            menu_selector(GameScreen::onRestart));
+    restartItem->
+    setPosition(ccp(continueItem->getPosition().x, _pauseLayer->getContentSize().height/2));
+    restartItem->setScale(0.8);
+    CCMenuItemImage * quitItem =
+    CCMenuItemImage::create("btn_backmain.png", "btn_backmain_active.png", this,
+                            menu_selector(GameScreen::onQuit));
+    quitItem->
+    setPosition(ccp(continueItem->getPosition().x, _pauseLayer->getContentSize().height * 1/4));
+    quitItem->setScale(0.8);
+    CCMenu * pauseMenu = CCMenu::create(continueItem, restartItem, quitItem, NULL);
+    pauseMenu->setPosition(ccp(0, 0));
+    sprGameOver->addChild(pauseMenu);
+    
+}
+
+void GameScreen::initForItem(){
+    arrIsItems = new CCArray();
+    arrPosItems = new CCArray();
 }

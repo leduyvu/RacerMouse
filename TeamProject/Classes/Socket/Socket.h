@@ -13,6 +13,11 @@
 #include "Package.h"
 using namespace std;
 class Socket {
+private:
+    Package package;
+    socklen_t len;
+protected:
+    struct sockaddr_in servaddr,cliaddr;
 public:
     char addr[16];
     int port;
@@ -27,6 +32,17 @@ public:
     void close();
     char* getIpAddress();
     int getPort();
+    
+    Package getPackage();
+    void setPackage(Package package);
+};
+
+struct roomThread{
+    Socket* sock1;
+    Socket* sock2;
+    bool isPlaying = false;
+    bool isFull = false;
+    int countPlayer = 0;
 };
 
 #endif  //_SOCKET_H

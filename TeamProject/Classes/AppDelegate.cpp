@@ -44,8 +44,10 @@ bool AppDelegate::applicationDidFinishLaunching()
 //    CCScene *pScene = GameScreen::scene();
 //    CCScene *pScene = RankingScene::scene();
     //CCScene *pScene = NameScene::scene();
-
+    
     CCScene *pScene = GameMenu::scene();
+
+//    CCScene *pScene = GameRoom::scene(NULL);
 
     // run
     pDirector->runWithScene(pScene);

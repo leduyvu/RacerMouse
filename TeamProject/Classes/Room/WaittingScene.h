@@ -15,6 +15,7 @@
 #include "ClientSocket.h"
 #include "Definition.h"
 #include "Client.h"
+#include "GameRoom.h"
 USING_NS_CC;
 class WaittingScene : public cocos2d::CCLayer
 {

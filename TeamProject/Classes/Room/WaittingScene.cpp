@@ -87,7 +87,7 @@ void WaittingScene::ready(){
     client->getPackage()->setMessageCode(MESSAGE_CODE_READY);
     client->getSocket()->send(*(client->getPackage()));
     dynamic_cast<CCLabelTTF*>(this->getChildByTag(10))->setString("OKK");
-    
+
     client->getSocket()->recv(*(client->getPackage()));
     if(client->getPackage()->getMessageCode() == (int)MESSAGE_CODE_READY){
         dynamic_cast<CCLabelTTF*>(this->getChildByTag(20))->setString("OK");
@@ -95,5 +95,10 @@ void WaittingScene::ready(){
 }
 
 void WaittingScene::quitRoom(){
+    client->getPackage()->setMessageCode(MESSAGE_CODE_EXITROOM);
+    client->getSocket()->send(*(client->getPackage()));
+    cocos2d::CCScene *newGameScene  = GameRoom::scene(client);
+    cocos2d::CCTransitionScene* transition = cocos2d::CCTransitionSlideInT::create(1, newGameScene);
+    cocos2d::CCDirector::sharedDirector()->replaceScene(transition);
     
 }

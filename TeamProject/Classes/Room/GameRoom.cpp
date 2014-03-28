@@ -1,15 +1,37 @@
 
 #include "GameRoom.h"
 #include <pthread.h>
-CCScene* GameRoom::scene(){
+CCScene* GameRoom::scene(Client* client){
     CCScene *scene = CCScene::create();
-    GameRoom *layer = GameRoom::create();
+    GameRoom *layer = GameRoom::create(client);
     scene->addChild(layer);
     return scene;
 }
 
-bool GameRoom::init(){
-    connectServer();
+GameRoom::GameRoom(){
+
+}
+
+GameRoom* GameRoom::create(Client* client){
+    GameRoom* pRet = new GameRoom();
+    if(pRet && pRet->init(client)){
+        pRet->autorelease();
+        return pRet;
+    }
+    else{
+        delete pRet;
+        pRet = NULL;
+        return NULL;
+    }
+}
+
+bool GameRoom::init(Client* client){
+    if(client == NULL){
+        connectServer();
+    }
+    else{
+        this->client = client;
+    }
     CCSize sizeScreen = CCDirector::sharedDirector()->getWinSize();
 //    this->setTouchEnabled(true);
     
@@ -32,7 +54,6 @@ bool GameRoom::init(){
     CCMenu* pMenu = CCMenu::create(connectItem, NULL);
     pMenu->setPosition( CCPointZero );
     this->addChild(pMenu, 1);
-
     return true;
 }
 
@@ -40,24 +61,8 @@ GameRoom::~GameRoom(){
     this->removeAllChildrenWithCleanup(true);
 }
 
-//void GameRoom::menuNewGameCallback(){
-//}
-//
-//void GameRoom::quit(){
-//}
-//
-//void GameRoom::settingContentBGM(){
-//}
-//
-//void GameRoom::settingBMG(CCNode* sender, void *data){
-//    
-//}
-//
-//void GameRoom::settingSound(){
-//}
-
 void GameRoom::connectServer(){
-    char addr[20]="192.168.1.134";
+    char addr[20]="192.168.1.220";
     int port= 8080;
     socket = new ClientSocket(addr, port);
     if(socket->connect() >= 0){
@@ -72,6 +77,7 @@ void GameRoom::connectServer(){
 
 void GameRoom::connectRoom(){
     try{
+        puts("try connect room");
         if(client->connectRoom(1)){
             CCLOG("..........   client ID :  % d   ...............", client->getClientID());
             cocos2d::CCScene *newGameScene  = WaittingScene::scene(client);

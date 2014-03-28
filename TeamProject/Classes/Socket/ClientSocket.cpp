@@ -16,7 +16,6 @@ int ClientSocket::connect() {
   int return_connect = ::connect(fd, (struct sockaddr*) &srv, sizeof(srv));
   if (return_connect < 0){
     perror("connect");
-//    exit(1);
   }
   return return_connect;
 }

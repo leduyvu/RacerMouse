@@ -312,6 +312,7 @@
 		CE9575D918D321C40008684A /* Background in Resources */ = {isa = PBXBuildFile; fileRef = CE9575D818D321C40008684A /* Background */; };
 		CE9575DB18D3269B0008684A /* Item in Resources */ = {isa = PBXBuildFile; fileRef = CE9575DA18D3269B0008684A /* Item */; };
 		CEB8AD6D18CF0085000DE16C /* WaittingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEB8AD6B18CF0084000DE16C /* WaittingScene.cpp */; };
+		CEF510BB18D35F5700A60785 /* btn_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = CEF510BA18D35F5700A60785 /* btn_normal.png */; };
 		DCCF8FC818D2B17F007A5148 /* GameManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCCF8FC218D2B17F007A5148 /* GameManager.cpp */; };
 		DCCF8FC918D2B17F007A5148 /* NameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCCF8FC418D2B17F007A5148 /* NameScene.cpp */; };
 		DCCF8FCA18D2B17F007A5148 /* RankingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCCF8FC618D2B17F007A5148 /* RankingScene.cpp */; };
@@ -966,6 +967,7 @@
 		CE9575DA18D3269B0008684A /* Item */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Item; path = Resources/Item; sourceTree = "<group>"; };
 		CEB8AD6B18CF0084000DE16C /* WaittingScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WaittingScene.cpp; sourceTree = "<group>"; };
 		CEB8AD6C18CF0085000DE16C /* WaittingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaittingScene.h; sourceTree = "<group>"; };
+		CEF510BA18D35F5700A60785 /* btn_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_normal.png; sourceTree = "<group>"; };
 		DCCF8FC218D2B17F007A5148 /* GameManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameManager.cpp; sourceTree = "<group>"; };
 		DCCF8FC318D2B17F007A5148 /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameManager.h; sourceTree = "<group>"; };
 		DCCF8FC418D2B17F007A5148 /* NameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NameScene.cpp; sourceTree = "<group>"; };
@@ -1039,6 +1041,7 @@
 		849EE4DD18D2DCED00AEC0F2 /* sozai */ = {
 			isa = PBXGroup;
 			children = (
+				CEF510BA18D35F5700A60785 /* btn_normal.png */,
 				849EE4DE18D2DCED00AEC0F2 /* bg_maps.png */,
 				849EE4DF18D2DCED00AEC0F2 /* bg_room.psd */,
 				849EE4E018D2DCED00AEC0F2 /* box.png */,
@@ -2496,6 +2499,7 @@
 				CE9575D718D31E700008684A /* Key in Resources */,
 				CE9575D918D321C40008684A /* Background in Resources */,
 				CE9575DB18D3269B0008684A /* Item in Resources */,
+				CEF510BB18D35F5700A60785 /* btn_normal.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2839,7 +2843,7 @@
 				GCC_PREFIX_HEADER = TeamProject/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = TeamProject/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/TeamProject/libs/cocos2dx/platform/third_party/ios/libraries\"",
@@ -2850,7 +2854,7 @@
 					"-lsqlite3",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "\"TeamProject/libs/Chipmunk/include/chipmunk\"";
 				WRAPPER_EXTENSION = app;
 			};
@@ -2865,7 +2869,7 @@
 				GCC_PREFIX_HEADER = TeamProject/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = TeamProject/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/TeamProject/libs/cocos2dx/platform/third_party/ios/libraries\"",
@@ -2876,7 +2880,7 @@
 					"-lsqlite3",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "\"TeamProject/libs/Chipmunk/include/chipmunk\"";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;

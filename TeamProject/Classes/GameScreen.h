@@ -49,6 +49,14 @@ private:
     bool isSlow;
     int timeSlow;
     float iceTime = 0;
+    
+    //score
+    int iScore = 0;
+    CCLabelTTF* lbScore;
+    
+    //item
+    CCArray* arrIsItems;
+    CCArray* arrPosItems;
 public:
     // Method 'init' in cocos2d-x returns bool, instead of 'id' in cocos2d-iphone (an object pointer)
     virtual bool init();
@@ -60,6 +68,7 @@ public:
     void menuCloseCallback(CCObject* pSender);
     //map
     void initMap();
+    void initItemView();
     //keybrouch
     void intKey();
     void moveKey(CCNode* sender, void* data);
@@ -74,6 +83,9 @@ public:
     void autoCharactersPlay();
     void autoPlay();
     void autoImpactItem();
+    void autoCreateItem();
+    //
+    void initForItem();
     /************************** ITEM ***********************/
     //slow after eat item
     void slowCharacters(bool bICE);
@@ -93,6 +105,9 @@ public:
     void onContinue(CCObject * pSender);
     void onRestart(CCObject * pSender);
     void onQuit(CCObject * pSender);
+    
+    //game over
+    void showGameOver();
  };
 
 #endif /* defined(__TeamProject__GameScreen__) */
